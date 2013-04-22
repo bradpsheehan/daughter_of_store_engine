@@ -1,0 +1,5 @@
+- if current_user
+  = link_to 'Checkout', store_checkout_path(current_store), class: 'btn btn-success span3'
+- else
+  %a.btn.btn-success.span3{"data-toggle" => "modal", :href => "#checkout_modal", :role => "button"} Checkout
+  = render 'checkout_modal'

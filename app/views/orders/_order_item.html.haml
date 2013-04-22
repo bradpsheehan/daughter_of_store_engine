@@ -1,0 +1,5 @@
+%tr
+  %td= link_to order_item.title, store_product_path(order_item.store, order_item.product)
+  %td= order_item.quantity
+  %td= number_to_currency(order_item.unit_price)
+  %td= number_to_currency(order_item.subtotal)

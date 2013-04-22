@@ -1,0 +1,13 @@
+.order-index
+  = render partial: '/users/user_navigation', locals: { active: :orders }
+  .span8
+    %h1= t('order.history')
+    %hr/
+    %table.table.table-striped
+      %thead
+        %th #
+        %th= t('model.status')
+        %th= t('order.date')
+        %th= t('total')
+      %tbody
+        = render partial: 'order', collection: @orders

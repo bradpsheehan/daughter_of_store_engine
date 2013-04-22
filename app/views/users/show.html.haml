@@ -1,0 +1,10 @@
+.user-index
+  = render partial: 'user_navigation', locals: { active: :account_details }
+  .span8
+    %h1= t('account.edit')
+    %hr/
+    .pull-right
+      = link_to 'Create New Store',     |
+        new_store_path,                 |
+        class: 'btn btn-custom-lighten' |
+    = render 'form'

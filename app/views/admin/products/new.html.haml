@@ -1,0 +1,6 @@
+.admin-product-new
+  = render partial: 'shared/admin_navigation', :locals => { active: false }
+  .span8
+    %h2= t 'product.create'
+    %hr/
+    = render 'form'

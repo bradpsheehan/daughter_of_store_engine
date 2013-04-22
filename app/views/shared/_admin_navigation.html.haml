@@ -1,0 +1,16 @@
+.span3
+  %ul.nav.nav-list
+    - if current_store.is_admin?(current_user)
+      %li.nav-header= t('admin.self')
+      %li{:class => active == :manage ? 'active' : ''}
+        = link_to 'Manage', store_admin_manage_path(current_store)
+      %li{:class => active == :dashboard ? 'active' : ''}
+        = link_to t('admin.dashboard'), store_admin_dashboard_path(current_store)
+      %li{:class => active == :products ? 'active' : ''}
+        = link_to t('product.collection'), store_admin_products_path(current_store)
+      %li{:class => active == :categories ? 'active' : ''}
+        = link_to t('categories.self'), store_admin_categories_path(current_store)
+    - elsif current_store.is_stocker?(current_user)
+      %li.nav-header Stocker
+      %li{:class => active == :products ? 'active' : ''}
+        = link_to t('product.collection'), store_stock_products_path(current_store)

@@ -1,0 +1,22 @@
+.admin-product-index
+  = render partial: 'shared/admin_navigation', :locals => { active: :products }
+  .span8
+    %h1= t 'product.collection'
+    %hr/
+    .pull-right
+      = button_to 'New Product',                     |
+        new_store_admin_product_path(current_store), |
+        method: :get,                                |
+        class: 'btn btn-large btn-custom-lighten'    |
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= t 'product.title'
+          %th= t 'product.price'
+          %th= t 'categories.self'
+          %th= t 'model.status'
+          %th
+      %tbody
+        = render @products
+    .pull-right
+      = paginate @products

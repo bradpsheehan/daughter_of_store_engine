@@ -1,0 +1,25 @@
+.cart-overview
+  - if current_cart.empty?
+    %h5= t('cart.isempty')
+    = link_to t('back.home'), root_path
+  - else
+    %table.table.table-striped
+      %thead
+    %th
+    %th= t('product.self')
+    %th= t('product.price')
+    %th= t('product.quantity')
+    %tbody
+      = render partial: 'cart_item'
+    #shopping_cart_summary
+      .pull-right
+        %h5
+          Total: #{number_to_currency(current_cart.total)}
+      .btn-toolbar
+        %span.btn-group.pull-right
+          = render partial: 'checkout_button'
+          %br/
+          %br/
+          = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn btn-block', method: :delete
+        .pull-left
+          = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn span3', method: :delete

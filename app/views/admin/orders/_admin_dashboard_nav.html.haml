@@ -1,0 +1,12 @@
+%ul.nav.nav-pills
+  - if active_tab == 'all'
+    %li.active
+  - else
+    %li
+  = link_to "#{count} #{t 'total'}", store_admin_dashboard_path(current_store)
+  - %w(pending cancelled paid shipped returned).each do |status|
+    - if active_tab == status
+      %li.active
+    - else
+      %li
+    = link_to status_count(status), store_admin_dashboard_path(current_store, status: status)

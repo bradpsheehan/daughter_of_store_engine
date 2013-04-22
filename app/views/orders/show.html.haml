@@ -1,0 +1,31 @@
+.order-show
+  - if logged_in?
+    = render partial: '/users/user_navigation', locals: { active: false }
+  .span8
+    %h1
+      = t('order.self')
+      \##{@order.id}
+    %p
+      = t('model.createdat')
+      = @order.created_at.to_s(:short)
+    %span.label.default= @order.status
+    = t('time.asof')
+    = @order.updated_at.to_s(:short)
+    %br/
+    %br/
+    %table.table.table-striped
+      %thead
+        %th= t('product.name')
+        %th= t('product.quantity')
+        %th= t('product.unitprice')
+        %th= t('product.subtotal')
+      %tbody
+        = render partial: 'order_item', collection: @order_items
+      %tfoot
+        %tr
+          %td
+          %td
+          %td{:style => "text-align: right;"}
+            = t('total')
+            \:
+          %td= number_to_currency(@order.total)
