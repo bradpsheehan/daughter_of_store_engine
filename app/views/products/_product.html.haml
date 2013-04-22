@@ -1,0 +1,7 @@
+= link_to store_product_path(current_store, product) do
+  .products.span3
+    %p= image_tag gen_image_url(product.id)
+    %h5= product.title.titleize
+    %p
+      = t('product.price')
+      \: #{number_to_currency(product.price)}

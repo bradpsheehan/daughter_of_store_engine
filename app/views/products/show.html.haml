@@ -1,0 +1,28 @@
+.row
+  .prod_detail_img.span6
+    %p= image_tag gen_image_url(@product.id)
+  .prod_detail_text.span5
+    %h2
+      - t('product.title')
+      = @product.title
+    %hr/
+    %p
+      - t('product.description')
+      = @product.description
+    #product-categories
+      %b
+        = t('categories.self')
+        \:
+      - @product.categories.each do |category|
+        %a{:href => "/products/?category_id=#{category.id}"}
+          %span.label= category.title
+    %br/
+    %h4
+      = t('product.price')
+      \: #{number_to_currency(@product.price)}
+    %br/
+    - if @product.status == 'active'
+      = render partial: 'add_to_cart_button', locals: {product: @product}
+      = render partial: 'buy_now_button', locals: {product: @product}
+    - else
+      %p Product is retired!

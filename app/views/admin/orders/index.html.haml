@@ -1,0 +1,21 @@
+.admin-order-index
+  = render partial: 'shared/admin_navigation', locals: { active: :dashboard }
+  .span8
+    %h1= t 'admin.dashboard'
+    %hr/
+    - if @count > 0
+      = render partial: 'admin_dashboard_nav', |
+        locals: { active_tab: @active_tab,     |
+        count: @count,                         |
+        statuses: @statuses}                   |
+      %br/
+      %table.table
+        %thead
+      %th #
+      %th= t 'model.createdat'
+      %th= t 'model.status'
+      %th= t 'model.modify'
+      %tbody
+        = render @orders
+    - else
+      = t 'order.none'

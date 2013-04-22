@@ -1,0 +1,40 @@
+.login-form
+  = simple_form_for @user, url: store_checkout_path(current_store), method: :post do |f|
+    - if @user.new_record?
+      %h4 Email
+      = f.input :email, input_html: { placeholder: t('placeholder.session.email') }
+    .span5
+      %h3 Shipping Address
+      %hr/
+      = f.simple_fields_for :shipping_address do |s|
+        = s.input :street
+        = s.input :city,  class:"input-prepend"
+        = s.input :state, class:"input-append"
+        = s.input :zipcode
+    .span5
+      %h3 Billing Address
+      %hr/
+      = f.simple_fields_for :billing_address do |b|
+        = b.input :street
+        = b.input :city
+        = b.input :state
+        = b.input :zipcode
+    .span10
+      %h3 Payment Information
+      %hr/
+      %span.payment-errors
+      .form-row
+        %label
+          %span Card Number / CVC
+          %input.span3{"data-stripe" => "number", :size => "20", :type => "text"}/
+          %input.span1{"data-stripe" => "cvc", :size => "4", :type => "text"}/
+      .form-row
+        %label
+          %span Expiration (MM/YYYY)
+          %input.span1{"data-stripe" => "exp-month", :size => "2", :type => "text"}/
+          %input.span2{"data-stripe" => "exp-year", :size => "4", :type => "text"}/
+      .form-row
+        %br/
+        = f.button :submit, 'Checkout', class:"btn btn-large btn-custom-lighten span2"
+        %p
+          %br/

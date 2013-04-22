@@ -1,0 +1,10 @@
+#homepage-category-dropdown.btn-group.span1
+  %a.btn.btn-custom-lighten.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    = t 'categories.select'
+    %span.caret
+  %ul.dropdown-menu
+    %li= link_to 'Show All', store_home_path(current_store)
+    - if categories.present?
+      - categories.each do |category|
+        %li
+          = link_to category.title, store_home_path(current_store, category_id: category.id)

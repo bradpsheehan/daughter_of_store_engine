@@ -1,0 +1,9 @@
+.admin-category-index
+  = render partial: 'shared/admin_navigation', :locals => { active: :categories }
+  .span8
+    %h1= t 'categories.self'
+    %hr/
+    .pull-right
+      = button_to 'New Category', new_store_admin_category_path(current_store), method: :get, class: 'btn btn-large btn-custom-lighten'
+    %table.table.table-striped
+      = render @categories

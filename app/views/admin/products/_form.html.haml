@@ -1,0 +1,9 @@
+= simple_form_for [current_store, :admin, @product] do |f|
+  = f.input :title, input_html: { placeholder: t('placeholder.product.title') }
+  = f.input :description, input_html: { placeholder: t('placeholder.product.description') }
+  = f.input :price, wrapper: :prepend do
+    = content_tag :span, t('bling.bling'), :class => "add-on"
+    = f.input_field :price, placeholder: '9.99', class: 'span1'
+  = f.association :categories
+  = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
+  = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
