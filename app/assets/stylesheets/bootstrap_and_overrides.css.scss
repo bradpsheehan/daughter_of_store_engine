@@ -1,0 +1,245 @@
+@import "bootstrap";
+
+@import "bootstrap-responsive";
+
+body {
+  padding-top: 60px;
+  background-color: #ddd;
+  color: #333;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 100%;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -.05em;
+}
+
+// PAGINATION
+
+.pagination {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 8px;
+  text-align:center;
+}
+
+// INDEX STYLES
+
+.lead_background {
+  background: url('robot-background.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 500px;
+}
+
+.lead_text {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 12em;
+}
+
+.white {
+  color: white;
+}
+
+// LINKS
+
+a {
+  color: #EE3A8C;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #8B2252;
+}
+
+// NAVIGATION
+
+.logo-pic {
+  float: left;
+}
+
+.logo-text {
+  float: left;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: -10px;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+}
+
+.navbar a.brand {
+  font-size: 100%;
+  font-weight: bold;
+  font-family: 'Helvetica', 'Arial' , sans-serif;
+  letter-spacing: -.05em;
+  color: #333;
+}
+
+.navbar a.brand:hover {
+  color:  #536b71;
+}
+
+.navbar .navbar-inner{
+  //background: url('texture.jpg') repeat fixed center;
+}
+
+//Use this to change the height of the navbar -- may push over the main content
+.navbar .nav{
+  height:50px;
+}
+
+
+// This makes the scrolly hr rule as seen on homepage
+/* Single-direction drop shadow */
+
+hr {
+    border: 2px solid;
+    color: #333;
+}
+
+//PRODUCTS
+
+.products {
+  text-align: center;
+  color: #395974;
+  padding: 5px;
+  margin: 5px;
+  height: 300px;
+}
+
+.content {
+  background-color: white;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.dropdown-menu {
+  text-align: left;
+}
+
+#homepage-category-dropdown {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.prod_detail_img product-categories {
+  display: inline;
+  white-space: nowrap;
+}
+
+.product-index {
+  margin: 30px;
+}
+
+// USERS
+
+.signup-form {
+  margin: 30px;
+}
+
+.user-index {
+  margin: 30px;
+}
+
+// LOGIN
+
+.login-form {
+  margin: 30px;
+}
+
+//CART / CATEGORY / SEARCH Buttons
+
+.cart-overview {
+  margin: 30px;
+}
+
+.btn-custom-lighten.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-custom-lighten {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #c8163a;
+  background-image: -moz-linear-gradient(top, #EE3A8C, #8B2252);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EE3A8C), to(#8B2252));
+  background-image: -webkit-linear-gradient(top, #EE3A8C, #8B2252);
+  background-image: -o-linear-gradient(top, #EE3A8C, #8B2252);
+  background-image: linear-gradient(to bottom, #EE3A8C, #8B2252);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffEE3A8C', endColorstr='#ff8B2252', GradientType=0);
+  border-color: #8B2252 #8B2252 #9f112e;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #8B2252;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-custom-lighten:hover,
+.btn-custom-lighten:focus,
+.btn-custom-lighten:active,
+.btn-custom-lighten.active,
+.btn-custom-lighten.disabled,
+.btn-custom-lighten[disabled] {
+  color: #ffffff;
+  background-color: #8B2252;
+  *background-color: #cd173c;
+}
+.btn-custom-lighten:active,
+.btn-custom-lighten.active {
+  background-color: #EE3A8C ;
+}
+
+.btn-custom-lighten.dropdown-toggle span.caret{
+  color: #fff;
+  border-top: 4px solid #fff;
+}
+
+
+.btn-group.open .btn.dropdown-toggle{
+  background-color:#EE3A8C;
+}
+
+// ORDERS
+
+.order-show {
+  margin: 30px;
+}
+
+.order-index {
+  margin: 30px;
+}
+
+// TABLES
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// FOOTER
+
+#footer{
+  height: 75px;
+  width: 100%;
+  position: relative;
+  top: 40px;
+  left: 0px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#footer #github {
+  max-width: 50%;
+}
+
+#love {
+  color: #777;
+}
