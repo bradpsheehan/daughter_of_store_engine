@@ -1,0 +1,5 @@
+.span3
+  %ul.nav.nav-list
+    %li.nav-header Uber
+    %li{:class => active == :dashboard ? 'active' : ''}
+      = link_to 'Dashboard', uber_stores_path

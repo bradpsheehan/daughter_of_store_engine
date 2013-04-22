@@ -1,0 +1,6 @@
+- if logged_in?
+  = form_tag store_buy_now_path(current_store), id: "buyNowForm" do
+    = hidden_field_tag :product_id, product.id
+    %script.stripe-button.btn-custom-lighten.btn-block{"data-amount" => product.price * 100, "data-image" => gen_image_url(7), "data-key" => "pk_test_osSOH0LyEEACshdRsLjyvGSz", "data-label" => t('product.buynow'), "data-name" => t('store.name'), :src => "https://checkout.stripe.com/v2/checkout.js"}
+- else
+  = button_to t('product.buynow'), login_path, class: 'btn btn-primary span3', method: :get

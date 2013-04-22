@@ -1,0 +1,7 @@
+.span3
+  %ul.nav.nav-list
+    %li.nav-header= t('account.self')
+    %li{:class => active == :account_details ? 'active' : ''}
+      = link_to t('account.edit'), profile_path
+    %li{:class => active == :orders ? 'active' : ''}
+      = link_to t('order.history'), account_orders_path

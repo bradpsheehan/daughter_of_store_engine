@@ -1,0 +1,13 @@
+- if current_store.pending?
+  %p#notice= "Not Found: This store is pending approval."
+  = render partial: 'store_details'
+- else
+  .product-index
+    %section.row
+      = render partial: 'category_dropdown', |
+        locals: { categories: @categories }  |
+    %br/
+    #product_listing.row-fluid
+      = render @products
+    .pagination
+      = paginate @products

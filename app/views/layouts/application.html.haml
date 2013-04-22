@@ -1,0 +1,33 @@
+<!doctype html>
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : t('store.name')
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag "/favicon.ico?1"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield(:head)
+  %body{:style => "background: url('/assets/#{store_theme}.jpg');"}
+    %header.navbar.navbar-fixed-top
+      %nav.navbar-inner
+        .container
+          = render 'layouts/navigation'
+    - if request.fullpath == root_path
+      = render 'layouts/index'
+    .container
+      .content
+        .row
+          .span12
+            = render 'layouts/messages'
+            = yield
+      / ! end of content
+    #footer
+      = link_to(image_tag('github_25.png'), '/code', id: 'github')
+      %a{:href => "/code"} View the Source Code
+      %br/
+      %p#love Made in Denver with love by Brad, Paul, Jorge and Raphael
+      %br/

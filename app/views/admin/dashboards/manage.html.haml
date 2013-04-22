@@ -1,0 +1,31 @@
+.admin-dashboard-manage
+  = render partial: 'shared/admin_navigation', |
+    locals: { active: :manage }                |
+  .span8
+    %h1 Manage
+    %hr/
+    %h4 Name
+    %p= current_store.name
+    %h4 Path
+    %p= current_store.path
+    %h4 Description
+    %p= current_store.description
+    %h4 Theme
+    %p= current_store.theme
+    = link_to 'Edit', store_admin_edit_store_path(current_store)
+    %hr/
+    = render partial: 'add_admin', locals: { admin: @admin }
+    %table.table.table-striped
+      %thead
+        %th Email
+        %th
+      %tbody
+        = render partial: 'admin', collection: @admins
+    %hr/
+    = render partial: 'add_stocker', locals: { stocker: @stocker }
+    %table.table.table-striped
+      %thead
+        %th Email
+        %th
+      %tbody
+        = render partial: 'stocker', collection: @stockers

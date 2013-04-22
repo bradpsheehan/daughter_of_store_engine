@@ -1,0 +1,6 @@
+.admin-category-edit
+  = render partial: 'shared/admin_navigation', :locals => { active: false }
+  .span8
+    %h2= t 'categories.edit'
+    %hr/
+    = render 'form'

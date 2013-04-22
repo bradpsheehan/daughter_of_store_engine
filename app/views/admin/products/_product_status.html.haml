@@ -1,0 +1,4 @@
+- if product.status == 'active'
+  %span.label.label-success= t('product.status.active')
+- elsif product.status == 'retired'
+  %span.label= t('product.status.retired')
