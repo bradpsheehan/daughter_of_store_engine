@@ -24,7 +24,6 @@ describe "admin dashboard" do
     end
 
     it "should show a total number of orders by status" do
-      visit 'store/admin/dashboard'
       expect(page).to have_content('0 Pending')
       expect(page).to have_content('2 Paid')
       expect(page).to have_content('1 Returned')
@@ -33,17 +32,16 @@ describe "admin dashboard" do
     end
 
     it "should allow for filtering by status" do
-      visit 'store/admin/dashboard'
       click_link('Paid')
       expect(page).to have_css('tr', count: 2)
     end
 
     context "within an individual order" do
       before(:each) do
-        @order = FactoryGirl.create(:order, user: @user)
-        @product = FactoryGirl.create(:product)
+        @order = FactoryGirl.create(:order, user: @user, store: @store)
+        @product = FactoryGirl.create(:product, store: @store)
         @order_item = FactoryGirl.create(:order_item, order: @order, product: @product)
-        visit admin_order_path(@order)
+        visit store_admin_order_path(@store, @order.id)
       end
 
       it "displays order creation date and time" do
@@ -58,7 +56,8 @@ describe "admin dashboard" do
       it "displays each product of the order with associated data" do
         expect(page).to have_content(@product.title)
         expect(page).to have_link(@product.title)
-        expect(page).to have_xpath("//a[@href='#{product_path(@product)}']")
+        # expect(page).to have_link store_admin_product_path(@store.path, @product.id)
+        # expect(page).to have_xpath("//a[@href='#{store_admin_product_path(@store, @product)}']")
         expect(find("input#admin_order_item_quantity").value.to_i).to eq @order_item.quantity
         expect(page).to have_content(@order_item.unit_price)
         expect(page).to have_content(@order_item.subtotal)
@@ -76,22 +75,24 @@ describe "admin dashboard" do
         it "progressing status based on rules" do
           expect(page).to have_button('cancel')
 
-          order = FactoryGirl.create(:order, user: @user, status: 'paid')
-          visit admin_order_path(order)
+          order = FactoryGirl.create(:order, user: @user, status: 'paid', store: @store)
+          visit store_admin_order_path(@store, order.id)
+          save_and_open_page
           expect(page).to have_button('mark as shipped')
 
-          order = FactoryGirl.create(:order, user: @user, status: 'shipped')
-          visit admin_order_path(order)
+          order = FactoryGirl.create(:order, user: @user, status: 'shipped', store: @store)
+          visit store_admin_order_path(@store, order.id)
           expect(page).to have_button('mark as returned')
 
-          order = FactoryGirl.create(:order, user: @user, status: 'cancelled')
-          visit admin_order_path(order)
+          order = FactoryGirl.create(:order, user: @user, status: 'cancelled', store: @store)
+          visit store_admin_order_path(@store, order.id)
           expect(page).to_not have_button('mark as returned')
           expect(page).to_not have_button('mark as shipped')
           expect(page).to_not have_button('cancel')
         end
 
         it "changing quantity ONLY when status pending or paid" do
+          save_and_open_page
           fill_in('admin_order_item_quantity', with: '10')
           click_button('Update')
           expect(page).to have_content(@order_item.unit_price * 10)
