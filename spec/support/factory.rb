@@ -49,11 +49,17 @@ FactoryGirl.define do
     city    'The Angels'
   end
 
-   factory :store do
+  factory :store do
     name  'Da best'
     description   'The bestest store'
     path 'a-store'
     status 'online'
+  end
+
+  factory :user_store_role do
+    store_id 1
+    user_id 1
+    role 'admin'
   end
 
 end

@@ -28,7 +28,7 @@ class Store < ActiveRecord::Base
   def is_admin?(user)
     user.uber? || UserStoreRole.exists?(store_id: self,
                                         user_id: user,
-                                        role: :admin)
+                                        role: 'admin')
   end
 
   def self.themes
@@ -39,14 +39,6 @@ class Store < ActiveRecord::Base
     UserStoreRole.exists?(store_id: self,
                           user_id: user,
                           role: :stocker)
-  end
-
-  def admin_or_stocker?(user)
-    if is_admin?(user)
-      :admin
-    elsif is_stocker?(user)
-      :stocker
-    end
   end
 
   def to_param
@@ -61,11 +53,13 @@ class Store < ActiveRecord::Base
     self.status == 'pending'
   end
 
-  def toggle_online_status(role)
+  def toggle_online_status
     if status == 'online'
-      update_attributes({status: 'offline'}, as: role)
+      self.status = 'offline'
+      self.save
     elsif status == 'offline'
-      update_attributes({status: 'online'}, as: role)
+      self.status = 'online'
+      self.save
     end
   end
 
