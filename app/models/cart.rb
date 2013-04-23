@@ -3,6 +3,10 @@ class Cart
     @cart_data = cart_data
   end
 
+  def cart_data
+    @cart_data
+  end
+
   def items
     products = Product.find(@cart_data.keys).index_by(&:id)
 

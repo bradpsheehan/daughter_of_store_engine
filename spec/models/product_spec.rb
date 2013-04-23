@@ -1,70 +1,83 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Product do
-  it 'has a valid factory' do
-    expect(FactoryGirl.create(:product)).to be_valid
-  end
+  
+  # let!(:store){Store.new(name:'storename',path:'storepath',description:'desc',status:'active',theme:'metal')}
+ 
+  let(:category){Category.new(store_id:1,title:'cat 1')}
+  let(:category1){Category.new(store_id:1,title:'cat 1')}
+
+  let(:product){Product.new}
+  let(:product1){Product.new}
+
+  let(:valid_product){Product.new(title:'title',description:'desc',price:12,status:'active',store_id:1)}
 
   it 'is invalid without a title' do
-    expect(FactoryGirl.build(:product, title: '')).to_not be_valid
+    p = product
+    p.title = ''
+    expect(p.save).to_not be
   end
 
   it 'is invalid without a description' do
-    expect(FactoryGirl.build(:product, description: '')).to_not be_valid
+    product.description = ''
+    expect(product.save).to_not be
   end
 
   it 'is invalid if title already exists (case insensitive)' do
-    FactoryGirl.create(:product)
-    product = FactoryGirl.build(:product)
-    expect(product.valid?).to be_false
+    valid_product.save
+    product.title = 'title'
+    expect(product.save).to_not be
   end
 
   it 'is invalid without a price' do
-    expect(FactoryGirl.build(:product, price: nil)).to_not be_valid
+    valid_product.price = nil
+    expect(valid_product.save).to_not be
   end
 
   it 'is invalid without a price greater than 0' do
-    expect(FactoryGirl.build(:product, price: 0)).to_not be_valid
+    valid_product.price = 0
+    expect(valid_product.save).to_not be
   end
 
   it 'is only valid with two or less decimal points' do
-    expect(FactoryGirl.build(:product, price: 0.123)).to_not be_valid
-    expect(FactoryGirl.build(:product, price: 0.10)).to be_valid
-    expect(FactoryGirl.build(:product, price: 0.1)).to be_valid
-    expect(FactoryGirl.build(:product, price: 2)).to be_valid
+    valid_product.price = 0.123
+    expect(valid_product.save).to_not be
   end
 
   it 'is invalid without a status' do
-    expect(FactoryGirl.build(:product, status: nil)).to_not be_valid
+    valid_product.status = nil
+    expect(valid_product.save).to_not be
   end
 
   it 'is invalid with a status other than active or retired' do
-    expect(FactoryGirl.build(:product, status: 'active')).to be_valid
-    expect(FactoryGirl.build(:product, status: 'retired')).to be_valid
-    expect(FactoryGirl.build(:product, status: 'something')).to_not be_valid
+    valid_product.status = 'funky'
+    expect(valid_product.save).to_not be
   end
 
   it 'has the ability to be assigned to multiple categories' do
-    nicknacks = FactoryGirl.create(:category, title: 'nicknacks')
-    superheroes = FactoryGirl.create(:category, title: 'superheroes')
-    product = FactoryGirl.create(:product, categories: [nicknacks, superheroes])
-    expect(product.categories.count).to eq 2
+    category.title = 'nicknacks'
+    category1.title = 'paddywacks'
+    category.save
+    category1.save
+
+    valid_product.categories = [category, category1]
+    valid_product.save
+    expect(valid_product.categories.count).to eq 2
   end
 
   describe '.toggle_status' do
     context 'on an active product' do
       it 'sets the status from active to retired' do
-        product = FactoryGirl.create(:product, status: 'active')
-        product.toggle_status
-        expect(product.status).to eq 'retired'
+        valid_product.toggle_status
+        expect(valid_product.status).to eq 'retired'
       end
     end
 
     context 'on a retired product' do
       it 'sets the statusto active' do
-        product = FactoryGirl.create(:product, status: 'retired')
-        product.toggle_status
-        expect(product.status).to eq 'active'
+        valid_product.status = 'retired'
+        valid_product.toggle_status
+        expect(valid_product.status).to eq 'active'
       end
     end
   end
