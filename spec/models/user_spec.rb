@@ -27,4 +27,31 @@ describe User do
     expect(FactoryGirl.build(:user, display_name: 'p' * 33)).to_not be_valid
     expect(FactoryGirl.build(:user, display_name: 'p' * 32)).to be_valid
   end
+
+  it 'can self.new_guest(params=nil)' do
+    guest = User.new_guest
+    expect(guest[:full_name]).to eq 'Guest'
+    expect(guest[:orphan]).to eq true
+  end
+
+  it 'can uber_up' do
+    user = FactoryGirl.create(:user, uber: false)
+    user.uber.should == false
+    user.uber_up
+    user.uber.should == true
+  end
+
+  it 'can uber?' do
+    user = FactoryGirl.create(:user, uber: false)
+    expect(user.uber?).to eq false
+    user.uber_up
+    expect(user.uber?).to eq true
+  end
+
+  it 'can orphan?' do
+    user = FactoryGirl.create(:user, orphan: false)
+    expect(user.orphan?).to eq false
+    guest = User.new_guest
+    expect(guest.orphan?).to eq true
+  end
 end

@@ -3,11 +3,10 @@ require 'spec_helper'
 describe OrdersController do
   describe 'index' do
     context 'when the user is logged in' do
-
       context 'when the user has orders in their history' do
         it 'renders the index view' do
-          user = FactoryGirl.create(:user)
-          login_user user
+          user1 = FactoryGirl.create(:user)
+          login_user user1
           expect(response).to be_success
         end
 
