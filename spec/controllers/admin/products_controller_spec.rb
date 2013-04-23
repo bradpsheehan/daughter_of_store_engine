@@ -1,22 +1,22 @@
 require 'spec_helper'
 
-describe Admin::ProductsController do
-  fixtures :all
-  render_views
-
-  it "index action should render index template" do
-    user = FactoryGirl.create(:uber)
-    store = Store.create(name: 'he', path: 'ha')
-    controller.stub(:require_admin => true)
-    controller.stub(:current_user => user)
-    controller.stub(:current_store => store)
-    get :index
-    response.should render_template(:index)
+describe ProductsController do
+  
+  describe 'GET #index' do
+    it "index action should render index template" do
+      controller.stub(:current_store => FactoryGirl.create(:store))
+      get :index
+      response.should render_template(:index)
+    end
   end
 
-  it "new action should render new template" do
-    controller.stub(:require_admin => true)
-    get :new
-    response.should render_template(:new)
+  describe 'GET #show'do
+   it "show action should render the show template" do
+      current_store = FactoryGirl.create(:store)
+      controller.stub(:current_store) { current_store }
+      product = FactoryGirl.create(:product, store: current_store)
+      get :show, id: product
+      response.should render_template(:show)
+    end
   end
 end
