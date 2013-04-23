@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_filter :require_admin_or_stocker
+  before_filter :require_admin
   before_filter :find_product, only: [ :edit,
                                        :update,
                                        :destroy,
@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update_attributes(params[:product])
-      redirect_to store_products_path(@role, current_store),
+      redirect_to store_admin_products_path(current_store),
         :notice  => "Successfully updated product."
     else
       render :action => 'edit', :notice  => "Update failed."
