@@ -3,6 +3,7 @@ class Store < ActiveRecord::Base
   attr_accessible :status, as: :uber
 
   has_many :categories
+  has_many :orders
   has_many :products
   has_many :user_store_roles
 
