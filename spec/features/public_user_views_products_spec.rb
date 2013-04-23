@@ -4,8 +4,9 @@ feature "Public User Views Products" do
 
   context "the root page" do
     before(:each) do
-      @product = FactoryGirl.create(:product)
-      visit root_path
+      @store = FactoryGirl.create(:store)
+      @product = FactoryGirl.create(:product, store: @store)
+      visit store_home_path(@store)
     end
 
     it "displays products" do
@@ -15,8 +16,9 @@ feature "Public User Views Products" do
 
   context "the product page" do
     before(:each) do
-      @product = FactoryGirl.create(:product)
-      visit store_product_path(current_store, @product)
+      @store = FactoryGirl.create(:store)
+      @product = FactoryGirl.create(:product, store: @store)
+      visit store_product_path(@store, @product)
     end
 
     it "displays the product name" do
@@ -24,8 +26,8 @@ feature "Public User Views Products" do
     end
 
     it "has an add-to-cart action" do
-      click_button "Add to Cart"
-      expect(current_path).to eq store_product_path(current_store, @product)
+      visit store_product_path(@store, @product)
+      expect(page).to have_button("Add to Cart")
     end
   end
 end
