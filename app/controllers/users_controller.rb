@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     end
 
     if @user.valid?
-      enqueue_welcome_email(@user.email,@user.full_name)
+      Resque.enqueue(WelcomeEmailJob, @user.email, @user.full_name)
+
       auto_login(@user)
       redirect_to @next_page || session[:return_to] || root_path,
                   notice: "Welcome, #{@user.full_name}"
@@ -24,8 +25,6 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-
-  private
 
   def update
     @user = current_user
@@ -47,10 +46,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def enqueue_welcome_email(email,full_name)
-    Resque.enqueue(WelcomeEmailJob, @user.email, @user.full_name)
-  end
 
   def next_page
     @next_page = params[:user].delete(:next_page)
