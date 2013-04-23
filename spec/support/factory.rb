@@ -24,17 +24,20 @@ FactoryGirl.define do
   end
 
   factory :user do
-    full_name 'Raphael Weiner'
-    email 'raphael@example.com'
-    display_name 'raphweiner'
+    full_name 'Brad Sheehan'
+    email 'brad@example.com'
+    display_name 'bradsheehan'
     password 'password'
-    uber false
+
+    factory :invalid_user do
+      full_name nil
+    end
   end
 
   factory :uber, parent: :user do
-    full_name 'Logan Sears'
-    email 'logan@gmail.com'
-    display_name 'lsears'
+    full_name 'Chris Knight'
+    email 'chris@example.com'
+    display_name 'knight'
     password 'password'
     uber true
   end
@@ -44,6 +47,13 @@ FactoryGirl.define do
     state   'CA'
     zipcode '90100'
     city    'The Angels'
+  end
+
+   factory :store do
+    name  'Da best'
+    description   'The bestest store'
+    path 'a-store'
+    status 'online'
   end
 
 end
