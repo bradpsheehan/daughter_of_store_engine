@@ -37,28 +37,15 @@ describe OrdersController do
 
   describe 'show' do
     context 'when the user is logged in' do
-
-      context 'when the order belongs to the user' do
         it 'assigns the order variable' do
           user = FactoryGirl.create(:user)
+          store = FactoryGirl.create(:store)
           order = FactoryGirl.create(:order, user: user)
           login_user user
-          get :show, params = {id: order.id}
+          get :show, params = {guid: order.guid}
           assigns(order).should eq @order
         end
       end
-
-      context 'when the order does NOT belong to the user' do
-        it 'redirects to the order history' do
-          user = FactoryGirl.create(:user)
-          user2 = FactoryGirl.create(:user, email: 'sneaky@laura.com')
-          order = FactoryGirl.create(:order, user: user)
-          login_user user2
-          get :show, params = {id: order.id}
-          expect(response).to redirect_to account_orders_path
-        end
-      end
-    end
 
     context 'when the user is not logged in' do
       it 'redirects the user to the login page' do

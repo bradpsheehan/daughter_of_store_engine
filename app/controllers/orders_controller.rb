@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :require_login, only: :index
+  before_filter :require_login, only: [:index, :show]
 
   def index
     @orders = current_user.orders
