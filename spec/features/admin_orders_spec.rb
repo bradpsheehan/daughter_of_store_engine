@@ -77,7 +77,6 @@ describe "admin dashboard" do
 
           order = FactoryGirl.create(:order, user: @user, status: 'paid', store: @store)
           visit store_admin_order_path(@store, order.id)
-          save_and_open_page
           expect(page).to have_button('mark as shipped')
 
           order = FactoryGirl.create(:order, user: @user, status: 'shipped', store: @store)
@@ -92,7 +91,6 @@ describe "admin dashboard" do
         end
 
         it "changing quantity ONLY when status pending or paid" do
-          save_and_open_page
           fill_in('admin_order_item_quantity', with: '10')
           click_button('Update')
           expect(page).to have_content(@order_item.unit_price * 10)
