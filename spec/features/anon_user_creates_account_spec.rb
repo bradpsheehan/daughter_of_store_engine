@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'new user creates and edits account' do
   def signup_user
-    visit '/signup'
+    visit signup_path
     fill_in "Full Name", with: 'Maya Angelou'
     fill_in "Email", with: 'poetry@poetry.com'
     fill_in "Display Name", with: 'poet'
