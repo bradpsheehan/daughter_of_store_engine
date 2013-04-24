@@ -1,9 +1,16 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe Order do
   before(:each) do
     @user = FactoryGirl.create(:user)
+    Order.destroy_all
   end
+
+  let!(:order){FactoryGirl.create(:order, user: @user, status: 'pending')}
+  let!(:order2){FactoryGirl.create(:order, user: @user, status: 'paid')}
+  let!(:order3){FactoryGirl.create(:order, user: @user, status: 'paid')}
+  let!(:order4){FactoryGirl.create(:order, user: @user, status: 'pending')}
+  let!(:order5){FactoryGirl.create(:order, user: @user, status: 'pending')}
 
   it 'has a valid factory' do
     expect(FactoryGirl.build(:order, user: @user)).to be_valid
@@ -23,7 +30,7 @@ describe Order do
     expect(FactoryGirl.build(:order, user: @user, status: 'abracadabra')).to_not be_valid
   end
 
-  context 'create_and_charge' do
+  context 'create_and_charge' 
 #     it 'creates a new order' do
 #       product = FactoryGirl.create(:product)
 
@@ -35,5 +42,8 @@ describe Order do
 #       order.create_and_charge(cart)
 #       #that process creates a new order
     # end
+
+  it '.by_status(status)' do
+    expect(Order.by_status('paid').length).to eq 2
   end
 end
