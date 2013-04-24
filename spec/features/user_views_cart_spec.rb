@@ -3,19 +3,16 @@ require 'spec_helper'
 describe 'the user cart view' do
   context 'when there are no items in the cart' do
     it 'displays a message that the cart is empty' do
-      visit root_path
-      current_path.should == '/'
-      visit '/pbj'
-      page.should have_button "Cart"
+      store = FactoryGirl.create(:store)
+      visit store_home_path(store)
       click_button "Cart"
-      current_path.should == "/pbj/cart"
       page.should have_content "Your cart is empty. Start shopping!"
     end
   end
 
   context 'when there are items in the cart' do
     before(:each) do
-      @store = Store.find_by_path("pbj")
+      @store = FactoryGirl.create(:store)
       @product = FactoryGirl.create(:product, store_id: @store.id)
       visit store_product_path(@store, @product)
       click_button 'Add to Cart'
@@ -39,7 +36,7 @@ describe 'the user cart view' do
     context 'the user wants to remove an item from the cart' do
       it 'gets removed' do
         click_button 'Empty Cart'
-        expect(current_path).to eq '/pbj'
+        expect(current_path).to eq "/#{@store.path}"
       end
     end
 

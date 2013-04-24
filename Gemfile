@@ -26,6 +26,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
   gem 'cane'
   gem 'reek'
   gem 'debugger'
