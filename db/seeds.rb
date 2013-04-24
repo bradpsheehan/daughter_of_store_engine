@@ -76,10 +76,10 @@ store10.update_attributes({status: 'offline'}, as: :uber)
 stores.each { |store| seed_categories(store, 10) }
 
 # CREATE PRODUCTS
-stores.each { |store| seed_products(store, 100) }
+stores.each { |store| seed_products(store, 10000) }
 
 # CREATE USERS
-seed_users(100)
+seed_users(10000)
 
 # CREATE ROLES
 stores.each do |store|
