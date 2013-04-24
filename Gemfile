@@ -16,6 +16,7 @@ gem 'kaminari'
 gem 'erb2haml'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
