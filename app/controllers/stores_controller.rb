@@ -1,6 +1,11 @@
 class StoresController < ApplicationController
+
+  def self.all_cached
+    Rails.cache.fetch('Store.all') { all }
+  end
+
   def index
-    @stores = Store.online
+    @stores = Store.all_cached.online
   end
 
   def new
