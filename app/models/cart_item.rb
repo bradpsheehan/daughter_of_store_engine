@@ -11,7 +11,11 @@ class CartItem
   end
 
   def unit_price
-    product.price
+    if product.promotion > 0 
+      product.promo_price
+    else
+      product.price
+    end
   end
 
   def total

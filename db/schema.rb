@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417213010) do
+ActiveRecord::Schema.define(:version => 20130424210624) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(:version => 20130417213010) do
     t.text     "description"
     t.decimal  "price",       :precision => 8, :scale => 2
     t.string   "status"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.float    "promotion",                                 :default => 0.0
   end
 
   create_table "stores", :force => true do |t|

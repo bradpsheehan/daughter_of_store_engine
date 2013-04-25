@@ -21,6 +21,7 @@ FactoryGirl.define do
     description 'Hurts so good'
     price 12.99
     status 'active'
+    promotion 0
   end
 
   factory :user do

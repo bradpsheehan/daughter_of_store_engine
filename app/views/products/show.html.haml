@@ -20,6 +20,10 @@
     %h4
       = t('product.price')
       \: #{number_to_currency(@product.price)}
+      %br
+      - if @product.promotion > 0
+        = t('product.promo_price')
+        \: #{number_to_currency(@product.promo_price)}
     %br/
     - if @product.status == 'active'
       = render partial: 'add_to_cart_button', locals: {product: @product}
