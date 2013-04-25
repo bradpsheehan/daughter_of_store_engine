@@ -45,7 +45,7 @@ end
 # THE USUAL SUSPECS / UBERS
 user1 = User.create(full_name: "Jeff", email: "demoXX+jeff@jumpstartlab.com", password: "password", display_name: "j3")
 user1.uber_up
-user2 = User.create(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com", password: "password", display_name: "SkrilleX")
+user2 = User.create(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com", password: "password", password_confirmation: "password", display_name: "SkrilleX")
 user2 = UserStoreRole.new(store_id: 2, user_id: 2, role: 'admin')
 user2.save
 
@@ -77,10 +77,10 @@ store10.update_attributes({status: 'offline'}, as: :uber)
 stores.each { |store| seed_categories(store, 10) }
 
 # CREATE PRODUCTS
-stores.each { |store| seed_products(store, 1000) }
+stores.each { |store| seed_products(store, 100) }
 
 # CREATE USERS
-seed_users(1000)
+seed_users(100)
 
 # CREATE ROLES
 stores.each do |store|
