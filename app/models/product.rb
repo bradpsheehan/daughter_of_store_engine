@@ -18,6 +18,8 @@ class Product < ActiveRecord::Base
                     numericality: { greater_than: 0 }
   validates :store_id, presence: true
 
+  validates :promotion, numericality: {:greater_than_or_equal_to => 0, :less_than_or_equal_to => 100 }
+
   scope :active, lambda { where(status: 'active') }
 
    def self.all_cached
@@ -30,6 +32,10 @@ class Product < ActiveRecord::Base
     else
       scoped
     end
+  end
+
+  def promo_price
+    self.price -= (self.price * (self.promotion/100))
   end
 
   def toggle_status

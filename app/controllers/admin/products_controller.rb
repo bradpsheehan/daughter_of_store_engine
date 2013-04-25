@@ -28,7 +28,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    promo = params[:product].delete(:promotion)
     if @product.update_attributes(params[:product])
+      @product.promotion = promo
+      @product.save
       redirect_to store_admin_products_path(current_store),
         :notice  => "Successfully updated product."
     else

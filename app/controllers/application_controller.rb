@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_admin_or_stocker
-    @role = current_store.admin_or_stocker?(current_user)
-    if current_store.nil? || !@role
-      not_authenticated
-    end
-  end
+  # def require_admin_or_stocker
+  #   @role = current_store.admin_or_stocker?(current_user)
+  #   if current_store.nil? || !@role
+  #     not_authenticated
+  #   end
+  # end
 
   def require_uber
     not_authenticated unless current_user && current_user.uber?
@@ -56,20 +56,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:i18n] || I18n.default_locale || :en
   end
 
-  def store_products_path(role, store)
-    if role == :admin
-      store_admin_products_path(store)
-    elsif role == :stocker
-      store_stock_products_path(store)
-    end
+  def store_products_path(role=nil, store)
+     store_admin_products_path(store)
   end
 
-  def edit_store_product_path(role, store, product)
-    if role == :admin
-      edit_store_admin_product_path(store, product)
-    elsif role == :stocker
-      store_stock_edit_product_path(store, product)
-    end
+  def edit_store_product_path(role=nil, store, product)
+    edit_store_admin_product_path(store, product)
   end
 
   def flag
