@@ -46,7 +46,8 @@ end
 user1 = User.create(full_name: "Jeff", email: "demoXX+jeff@jumpstartlab.com", password: "password", display_name: "j3")
 user1.uber_up
 user2 = User.create(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com", password: "password", display_name: "SkrilleX")
-user2.uber_up
+user2 = UserStoreRole.new(store_id: 2, user_id: 2, role: 'admin')
+user2.save
 
 # CREATE STORES
 store1 = Store.create!(name: "Brad's Bean Bags", path: "bean-bags-galore", description: "the bestest bean bags")
