@@ -19,6 +19,7 @@ gem 'html2haml'
 gem 'newrelic_rpm'
 gem 'heroku'
 gem 'dalli'
+gem 'memcached'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

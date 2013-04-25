@@ -35,6 +35,9 @@ StoreEngine::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  #caching
+  config.cache_store = :dalli_store
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true

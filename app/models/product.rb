@@ -20,6 +20,10 @@ class Product < ActiveRecord::Base
 
   scope :active, lambda { where(status: 'active') }
 
+   def self.all_cached
+    Rails.cache.fetch('Product.all',expires_in: 1.day) { all }
+  end
+
   def self.by_category(category_id)
     if category_id.present?
       Category.find(category_id).products

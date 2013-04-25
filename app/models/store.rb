@@ -25,6 +25,18 @@ class Store < ActiveRecord::Base
 
   scope :online, lambda { where(status: 'online') }
 
+  def self.all_cached
+    Rails.cache.fetch('Store.all',expires_in: 1.day) { all }
+  end
+
+  after_save    :expire_contact_all_cache
+  after_update  :expire_contact_all_cache
+  after_destroy :expire_contact_all_cache
+
+  def expire_contact_all_cache
+    Rails.cache.delete('Store.all')
+  end
+
   def is_admin?(user)
     user.uber? || UserStoreRole.exists?(store_id: self,
                                         user_id: user,
@@ -51,6 +63,10 @@ class Store < ActiveRecord::Base
 
   def pending?
     self.status == 'pending'
+  end
+
+  def online?
+    self.status == 'online'
   end
 
   def toggle_online_status

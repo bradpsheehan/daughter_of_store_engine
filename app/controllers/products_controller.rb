@@ -1,10 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :require_current_store
 
-  def self.all_cached
-    Rails.cache.fetch('Product.all') { all }
-  end
-
   def index
     @products = current_store.products.all_cached.by_category(params[:category_id])
                              .active.page(params[:page]).per(20)
