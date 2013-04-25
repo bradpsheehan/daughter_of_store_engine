@@ -39,6 +39,8 @@ GEM
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
+    bullet (4.6.0)
+      uniform_notifier
     cane (2.5.2)
       parallel
     capybara (2.1.0)
@@ -270,11 +272,13 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.2.0)
     validation-scopes (0.4.0)
       activemodel
     vegas (0.1.11)
       rack (>= 1.0.0)
     websocket (1.0.7)
+    xmpp4r (0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -285,6 +289,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bullet
   cane
   capybara
   coffee-rails (~> 3.2.1)
@@ -315,3 +320,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   validation-scopes
+  xmpp4r
