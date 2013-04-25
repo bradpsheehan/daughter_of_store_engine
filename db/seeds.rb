@@ -43,11 +43,14 @@ def seed_users(count)
 end
 
 # THE USUAL SUSPECS / UBERS
-user1 = User.create(full_name: "Jeff", email: "demoXX+jeff@jumpstartlab.com", password: "password", display_name: "j3")
+user1 = User.create!(full_name: "Jeff", email: "demoXX+jeff@jumpstartlab.com", password: "password", display_name: "j3")
 user1.uber_up
-user2 = User.create(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com", password: "password", password_confirmation: "password", display_name: "SkrilleX")
-user2 = UserStoreRole.new(store_id: 2, user_id: 2, role: 'admin')
-user2.save
+user2 = User.create!(full_name: "Steve Klabnik", email: "demoXX+steve@jumpstartlab.com", password: "password", password_confirmation: "password", display_name: "SkrilleX")
+u = UserStoreRole.new
+u.store_id=2
+u.user_id=user2.id
+u.role='admin'
+u.save
 
 # CREATE STORES
 store1 = Store.create!(name: "Brad's Bean Bags", path: "bean-bags-galore", description: "the bestest bean bags")
