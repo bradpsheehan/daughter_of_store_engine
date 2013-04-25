@@ -1,12 +1,6 @@
 .row
   .prod_detail_img.span6
-    - if @product.promotion > 0
-      .ribbon-wrapper-green
-        .ribbon-green
-          = t( '@product.promo_price' )
-        = image_tag gen_image_url(@product.id)
-    -else
-      = image_tag gen_image_url(@product.id)
+    = image_tag gen_image_url(@product.id)
   .prod_detail_text.span5
     %h2
       - t('product.title')
