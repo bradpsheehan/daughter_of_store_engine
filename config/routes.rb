@@ -5,7 +5,7 @@ StoreEngine::Application.routes.draw do
 
   root to: 'stores#index'
 
-  get "/code" => redirect("http://github.com/raphweiner/son_of_store_engine")
+  get "/code" => redirect("https://github.com/bradpsheehan/daughter_of_store_engine")
   put "/i18n" => "i18n#update"
 
   delete "/logout" => "sessions#destroy", as: :logout

@@ -53,10 +53,10 @@ u.role='admin'
 u.save
 
 # CREATE STORES
-store1 = Store.create!(name: "Brad's Bean Bags", path: "bean-bags-galore", description: "the bestest bean bags")
-store2 = Store.create!(name: "Jorge's Tortiallas", path: "tortilla-palace", description: "get yo tortilla on!")
-store3 = Store.create!(name: "Paul's PB&Js", path: "pbj", description: "peanut-butter-jelly-time")
-store4 = Store.create!(name: "Raphael's Rickshaws", path: "rick-roll-rickshaws", description: "rick roll up in this!")
+store1 = Store.create!(name: "Brad's Bots", path: "bots", description: "Autonomous death-bots")
+store2 = Store.create!(name: "Danny's Droids", path: "droids", description: "Programmable work droids")
+store3 = Store.create!(name: "Chris' Cyborgs", path: "cyborgs", description: "Industrial strength asteroid miners")
+store4 = Store.create!(name: "James' Drones", path: "drones", description: "Sentient killing machines")
 store5 = Store.create!(name: "George's Cool Market", path: "cool-market", description: "it's market time")
 store6 = Store.create!(name: "Burger Master", path: "burger-master", description: "the king of burgers")
 store7 = Store.create!(name: "Ice Cream Galore", path: "ice-cream-galore", description: "we loves us some ice cream")
@@ -70,7 +70,7 @@ stores = [store1, store2, store3, store4, store5, store6, store7, store8, store9
 store1.update_attributes({status: 'online'}, as: :uber)
 store2.update_attributes({status: 'online'}, as: :uber)
 store3.update_attributes({status: 'online'}, as: :uber)
-store4.update_attributes({status: 'declined'}, as: :uber)
+store4.update_attributes({status: 'online'}, as: :uber)
 store5.update_attributes({status: 'declined'}, as: :uber)
 # store 6-8 are pending by default
 store9.update_attributes({status: 'offline'}, as: :uber)
