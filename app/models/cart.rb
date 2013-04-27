@@ -47,6 +47,10 @@ class Cart
     items.empty?
   end
 
+  def apply_discount(discount)
+    self.total - discount
+  end
+
 private
   def calculate_count
     @cart_data.values.map(&:to_i).reduce(&:+)

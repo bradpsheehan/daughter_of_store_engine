@@ -5,8 +5,11 @@
   - else
     %table.table.table-striped
       %thead
+      .pull-right
+        = render partial: 'discount'
     %tbody
       = render partial: 'cart_item'
+
     #shopping_cart_summary
       .pull-right
         %h5

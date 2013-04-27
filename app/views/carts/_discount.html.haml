@@ -1,0 +1,8 @@
+%p Do you have a discount code?
+= simple_form_for :discounts do |f|
+  = f.input "discount"
+  = f.submit "Apply"
+
+
+/ check to see if input matches a discount code for that store
+/ if there is a match, take the doscount.amount for that code and do math with the total price on cart.
