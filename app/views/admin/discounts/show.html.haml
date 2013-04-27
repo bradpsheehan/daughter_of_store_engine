@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @discount.name
+%p
+  %b Amount:
+  = @discount.amount
+
+= link_to 'Edit', edit_discount_path(@discount)
+\|
+= link_to 'Back', discounts_path
