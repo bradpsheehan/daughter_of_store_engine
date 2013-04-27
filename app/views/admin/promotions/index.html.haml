@@ -1,0 +1,17 @@
+/ .admin-promotions-index
+/   = render partial: 'shared/admin_navigation', :locals => { active: :promotions }
+/   .span8
+/     %h1= t 'create promotions'
+/     %hr/
+
+/     %table.table.table-striped
+/       %thead
+/         %tr
+/           %th= button_to "Promote Category", new_store_admin_promotion_path(current_store)
+/           %th= button_to "Promote Product", new_store_admin_promotion_path(current_store)
+/           %th= button_to "Promote Store", new_store_admin_promotion_path(current_store)  
+/       %tbody
+/         / = render
+/     .pull-right
+/       / = paginate
+/   
