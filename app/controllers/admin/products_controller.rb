@@ -15,8 +15,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
+    promo = params[:product].delete(:promotion)
     @product = current_store.products.new(params[:product])
     if @product.save
+      @product.promotion = promo
+      @product.save
       redirect_to store_products_path(@role, current_store),
         :notice => "Successfully created product."
     else

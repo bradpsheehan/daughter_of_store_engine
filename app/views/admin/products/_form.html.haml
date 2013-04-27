@@ -1,10 +1,22 @@
+%meta{:charset => "utf-8"}/
+%link{:href => "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
+%script{:src => "http://code.jquery.com/jquery-1.9.1.js"}
+%script{:src => "http://code.jquery.com/ui/1.10.2/jquery-ui.js"}
+%link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
 = simple_form_for [current_store, :admin, @product] do |f|
   = f.input :title, input_html: { placeholder: t('placeholder.product.title') }
   = f.input :description, input_html: { placeholder: t('placeholder.product.description') }
+  = f.association :categories
   = f.input :price, wrapper: :prepend do
     = content_tag :span, t('bling.bling'), :class => "add-on"
     = f.input_field :price, placeholder: '9.99', class: 'span1'
-  = f.association :categories
-  = f.input :promotion
+
+  = f.input :promotion, class: 'span', input_html: { id: 'amount' }
+  #slider-range-min
+  
   = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
   = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
+
+
+
+        
