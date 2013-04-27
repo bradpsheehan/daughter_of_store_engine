@@ -34,6 +34,10 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def promotion_savings
+    (self.price * (self.promotion / 100)).to_i
+  end
+
   def promo_price
     self.price -= (self.price * (self.promotion/100))
   end

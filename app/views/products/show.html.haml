@@ -22,9 +22,11 @@
         = t('product.price')
         \: #{number_to_currency(@product.price)}
         %br
-      %h4
+      %h3
         = t('product.promo_price')
         \: #{number_to_currency(@product.promo_price)}
+      %h5
+        = ("You save #{@product.promotion.to_i}% or $#{@product.promotion_savings}")
     -else
       %h4
         = t('product.price')
