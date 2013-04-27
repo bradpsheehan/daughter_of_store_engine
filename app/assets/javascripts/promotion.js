@@ -8,5 +8,5 @@ $(document).ready(function() {
         $( "#amount" ).val( ui.value );
       }
     });
-    $( "#amount" ).val($( "#slider-range-min" ).slider( "value" ) );
+    $( "#amount" ).val($( "#slider-range-min" ).slider( "value" ) + "%");
   });
