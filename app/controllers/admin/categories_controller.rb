@@ -2,7 +2,8 @@ class Admin::CategoriesController < ApplicationController
   before_filter :require_admin
 
   def index
-    @categories = current_store.categories.all
+    @categories = current_store.categories.order('created_at DESC')
+                             .page(params[:page]).per(20)
   end
 
   def new

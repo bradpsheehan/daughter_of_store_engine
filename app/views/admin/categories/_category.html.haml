@@ -4,9 +4,10 @@
       = category.title
       = link_to t('crud.edit'), edit_store_admin_category_path(current_store, category)
 %tbody
-  - category.products.each do |product|
+  - @categories.each do |category|
     %tr
-      %td= product.title
+      %td= category.title
   - if category.products.count == 0
     %tr
       %td= t('categories.noproducts')
+
