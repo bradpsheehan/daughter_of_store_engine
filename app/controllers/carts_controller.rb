@@ -1,7 +1,7 @@
 require 'pry'
 class CartsController < ApplicationController
   def show
-    binding.pry
+    # binding.pry
     @discount ||= Discount.new
     if params[:discounts]
       store = Store.find_by_path(params[:store_path])
