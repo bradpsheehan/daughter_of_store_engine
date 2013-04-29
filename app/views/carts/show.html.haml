@@ -3,20 +3,20 @@
     %h5= t('cart.isempty')
     = link_to t('back.home'), root_path
   - else
+    %h1#cart-header Your RoboCart
+    %hr
     %table.table.table-striped
       %thead
-      .pull-right
-        = render partial: 'discount'
     %tbody
       = render partial: 'cart_item'
 
-    #shopping_cart_summary
+    .shopping_cart_summary
       .pull-right
-        %h5
+        %h3#cart-total
           Total: #{number_to_currency(current_cart.total)}
-      .btn-toolbar
-        %span.btn-group.pull-right
-          = render partial: 'checkout_button'
-          %br/
-          %br/
-          = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn btn-block', method: :delete
+        = render partial: 'checkout_button'
+        %br/
+      = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn pull-left', method: :delete
+      .discount-code
+        = render partial: 'discount'
+
