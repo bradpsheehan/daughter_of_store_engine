@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :status, :user_id, :store_id
+  attr_accessible :status, :user_id, :store_id, :total
   belongs_to :user
   belongs_to :store
   has_many :order_items, validate: true, dependent: :destroy
@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def self.create_pending_order(user, cart_items)
+  def self.create_pending_order(user, cart_items, session=nil)
     transaction do
       create(status: 'pending', user_id: user.id).tap do |order|
         cart_items.each do |cart_item|
@@ -35,7 +35,17 @@ class Order < ActiveRecord::Base
                                   unit_price: cart_item.unit_price,
                                   quantity: cart_item.quantity)
         end
-        order.save
+        subtotal = Hash.new(0)
+        order.order_items.each do |item|
+          subtotal[:amount] += item.unit_price.truncate
+        end
+        if session[:discount]
+          order.total = subtotal[:amount] - session[:discount]
+          order.save
+        else
+          order.total = subtotal[:amount]
+          order.save
+        end
       end
     end
   end
@@ -48,13 +58,14 @@ class Order < ActiveRecord::Base
     self.save
   end
 
-  def total
-    if order_items.present?
-      order_items.map {|order_item| order_item.subtotal }.inject(&:+)
-    else
-      0
-    end
-  end
+#this is where we need to apply the discount
+  # def total
+  #   if order_items.present?
+  #     order_items.map {|order_item| order_item.subtotal }.inject(&:+)
+  #   elsif order_items.present? && session[:discount]
+  #     order_items.map {|order_item| order_item.subtotal }.inject(&:+) - session[:discount ]
+  #   end
+  # end
 
   private
 

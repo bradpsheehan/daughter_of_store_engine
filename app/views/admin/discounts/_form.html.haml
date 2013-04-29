@@ -1,9 +1,9 @@
 .span8
-= simple_form_for @discount, url: store_admin_discounts_path(current_store) do |s|
-  = s.input :name
-  = s.input :amount
-  = s.hidden_field :store_id, value: current_store.id
-  = s.submit "Create Code", class: "btn btn-custom-lighten span2"
+  = simple_form_for [ current_store, :admin, @discount ] do |s|
+    = s.input :name
+    = s.input :amount
+    = s.hidden_field :store_id, value: current_store.id
+    = s.submit "Create Code", class: "btn btn-custom-lighten span2"
 
 
 / = form_for @discount do |f|

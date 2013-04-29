@@ -1,7 +1,9 @@
-%h1 Editing discount
-
-= render 'form'
-
-= link_to 'Show', @discount
-\|
-= link_to 'Back', discounts_path
+.admin-order-index
+  = render partial: 'shared/admin_navigation', locals: { active: :discounts }
+  .span8
+    %h1 Editing discount
+    %hr
+    =render 'form'
+    = link_to 'Show', store_admin_discounts_path
+    \|
+    = link_to 'Back', store_admin_discounts_path

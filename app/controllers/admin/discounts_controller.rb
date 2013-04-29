@@ -60,7 +60,7 @@ class Admin::DiscountsController < ApplicationController
 
     respond_to do |format|
       if @discount.update_attributes(params[:discount])
-        format.html { redirect_to @discount, notice: 'Discount was successfully updated.' }
+        format.html { redirect_to store_admin_discounts_path(current_store), notice: 'Discount was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class Admin::DiscountsController < ApplicationController
     @discount.destroy
 
     respond_to do |format|
-      format.html { redirect_to discounts_url }
+      format.html { redirect_to store_admin_discounts_url }
       format.json { head :no_content }
     end
   end

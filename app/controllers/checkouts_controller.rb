@@ -10,6 +10,7 @@ class CheckoutsController < ApplicationController
       order = create_order(@user, current_cart)
       if order.valid?
         current_cart.destroy
+        session[:discount] = 0
         redirect_to order_path(order), notice: "Order submitted!"
       else
         redirect_to store_cart_path(current_store), notice: "Checkout failed."
@@ -45,7 +46,7 @@ private
   end
 
   def create_order(user, cart_items)
-    Order.create_pending_order(user, cart_items).tap do |order|
+    Order.create_pending_order(user, cart_items, session).tap do |order|
       Resque.enqueue(OrderConfirmEmailJob, user, order.id, order.total)
     end
   end

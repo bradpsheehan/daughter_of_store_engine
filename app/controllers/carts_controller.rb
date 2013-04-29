@@ -7,6 +7,7 @@ class CartsController < ApplicationController
       store = Store.find_by_path(params[:store_path])
       @discount = Discount.find_by_name_and_store_id(params[:discounts][:name],store.id)
       if @discount
+        session[:discount] = @discount.amount
         flash[:notice] = "Cool."
       else
         redirect_to store_cart_path(current_store), :notice  => "Discount doesn't exist"
