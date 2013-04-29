@@ -11,8 +11,9 @@
     = content_tag :span, t('bling.bling'), :class => "add-on"
     = f.input_field :price, placeholder: '9.99', class: 'span1'
 
-  = f.input :promotion, label: "Promotional Percent Off", class: 'span', input_html: { id: 'amount', :style => "border: 0; color: #f6931f; font-weight: bold;", :type => "text"}
+  = f.input :promotion, label: "Promotional Percent Off", class: 'span', input_html: {id: 'amount', :style => "border: 0; color: #f6931f; font-weight: bold;", :type => "text"}
   #slider-range-min
+  #promotion-price
   %br
   %br
   = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
@@ -21,3 +22,12 @@
 
 
 
+
+
+
+
+  #full-price
+    = @product.price
+  #existing-promotion-value
+    = @product.promotion.to_i
+  #slider-value
