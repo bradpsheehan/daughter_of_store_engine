@@ -41,10 +41,10 @@ class Order < ActiveRecord::Base
         end
         if session[:discount]
           order.total = subtotal[:amount] - session[:discount]
-          order.save
+          order.save!
         else
           order.total = subtotal[:amount]
-          order.save
+          order.save!
         end
       end
     end
