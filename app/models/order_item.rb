@@ -15,6 +15,6 @@ class OrderItem < ActiveRecord::Base
   validates :order, presence: true
 
   def subtotal
-    BigDecimal.new(unit_price.to_s) * BigDecimal.new(quantity.to_s)
+    subtotal = BigDecimal.new(unit_price.to_s) * BigDecimal.new(quantity.to_s)
   end
 end

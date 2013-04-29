@@ -9,8 +9,8 @@ class SessionCart
     @cart = Cart.new(@db[@current_store.id])
   end
 
-  def total
-    @cart.total
+  def total(discount=nil)
+    @cart.total(discount)
   end
 
   def count

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424210624) do
+ActiveRecord::Schema.define(:version => 20130429151701) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20130424210624) do
     t.integer "product_id"
   end
 
+  create_table "discounts", :force => true do |t|
+    t.string   "name"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "store_id"
+  end
+
   create_table "order_items", :force => true do |t|
     t.integer  "order_id"
     t.integer  "product_id"
@@ -57,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130424210624) do
     t.string   "guid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "total"
   end
 
   add_index "orders", ["guid"], :name => "index_orders_on_guid", :unique => true

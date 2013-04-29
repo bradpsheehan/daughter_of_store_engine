@@ -39,8 +39,6 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     session[:cart] ||= {}
-    # design: {store_id => {product_id => quantity, product_id => quantity}, store_id => ...}
-    # ex. session[:cart] = {1 => {1 => 5, 2 => 1}, 10 => {20 => 1}}
     @cart ||= SessionCart.new(session[:cart], current_store)
   end
 

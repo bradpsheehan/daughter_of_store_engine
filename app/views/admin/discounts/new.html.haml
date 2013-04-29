@@ -1,0 +1,8 @@
+.admin-order-index
+  = render partial: 'shared/admin_navigation', locals: { active: :discounts }
+  .span8
+    %h1 New discount
+
+    = render 'form'
+
+    = link_to 'Back', store_admin_discounts_path

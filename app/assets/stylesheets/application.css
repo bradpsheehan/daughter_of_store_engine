@@ -14,9 +14,29 @@
 
 /* For the Shopping Cart Show Page*/
 #shopping_cart_summary {
-  float: right;
+  display-block: inline;
 }
-
+#cart-total {
+  text-align: right;
+}
+.discount-code {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+#cart-header {
+  text-align: center;
+}
+#cart-update {
+  margin-top: 25%;
+  text-align: right;
+}
+.input-small#carts_quantity {
+  text-align: right;
+}
+.control-label{
+  display: none;
+}
 .strokeme
 {
     color: white;
@@ -26,7 +46,6 @@
     -1px 1px 0 #000,
     1px 1px 0 #000;  
 }
-
 /* This is the sidebar nav used for user account and admin stuff*/
 .nav-list li.nav-header{
   color: rgb(51, 51, 51);
