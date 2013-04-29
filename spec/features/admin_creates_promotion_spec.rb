@@ -24,13 +24,13 @@ describe 'an admin can put a product on sale with a promotion' do
         visit store_admin_products_path(@store)
         click_link "Edit"
         current_path.should eq edit_store_admin_product_path(@store, @product)
-        page.should have_field "Promotion"
+        page.should have_field "amount"
       end
 
       context 'admin edits a products promotion field' do
         it 'succesfully updates the product' do
           visit edit_store_admin_product_path(@store, @product)
-          fill_in "Promotion", with: 75
+          fill_in "amount", with: 75
           click_button "Submit"
           expect(page).to have_content "Successfully updated product"
           visit store_product_path(@store, @product)
@@ -40,7 +40,7 @@ describe 'an admin can put a product on sale with a promotion' do
         it 'displays the adjusted promotional price on the page' do
           pending
           visit edit_store_admin_product_path(@store, @product)
-          fill_in "Promotion", with: 75
+          fill_in "amount", with: 75
           page.should have_content("Promotional Price: 45.75")
         end
       end
