@@ -21,12 +21,12 @@
     - if current_store != nil && current_store.id != nil
       %li
         = button_to "#{t 'navigation.cart'} #{current_cart.count}", store_cart_path, class: 'btn btn-custom-lighten', method: :get
-    %li.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        = image_tag("/images/flags/#{flag}.png")
-        %b.caret
-      %ul.dropdown-menu
-        %li= link_to image_tag("/images/flags/us.png") + " #{t('languages.english')}", i18n_path(locale: 'en'), method: :put
-        %li= link_to image_tag("/images/flags/cs.png") + " #{t('languages.creaturespeak')}", i18n_path(locale: 'cs'), method: :put
-        %li= link_to image_tag("/images/flags/fr.png") + " #{t('languages.french')}", i18n_path(locale: 'fr'), method: :put
-        %li= link_to image_tag("/images/flags/ca.png") + " #{t('languages.canadian')}", i18n_path(locale: 'ca'), method: :put
+    / %li.dropdown
+    /   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    /     = image_tag("/images/flags/#{flag}.png")
+    /     %b.caret
+    /   %ul.dropdown-menu
+    /     %li= link_to image_tag("/images/flags/us.png") + " #{t('languages.english')}", i18n_path(locale: 'en'), method: :put
+    /     %li= link_to image_tag("/images/flags/cs.png") + " #{t('languages.creaturespeak')}", i18n_path(locale: 'cs'), method: :put
+    /     %li= link_to image_tag("/images/flags/fr.png") + " #{t('languages.french')}", i18n_path(locale: 'fr'), method: :put
+    /     %li= link_to image_tag("/images/flags/ca.png") + " #{t('languages.canadian')}", i18n_path(locale: 'ca'), method: :put

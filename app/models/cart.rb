@@ -24,6 +24,10 @@ class Cart
     total
   end
 
+  def pretotal
+    total = items.map {|item|item.total}.inject(&:+) 
+  end
+
   def remove_item(product_id)
     if product_id.present?
       @cart_data.delete(product_id)
