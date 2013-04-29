@@ -14,13 +14,11 @@
         - num1 = current_cart.pretotal
         - num2 = current_cart.total(@discount)
         - if num2 != num1
-          %h4#cart.span3 You saved #{number_to_currency(num1-num2)}!!
-          %br
-          %h2#cart.span3 #{number_to_currency(num2)}
-          %br 
+          %h4#cart You saved #{number_to_currency(num1-num2)}!!
+          %h2#cart Total: #{number_to_currency(num2)}
           = render partial: 'checkout_button'
         - else
-          %h2#cart.span3 #{number_to_currency(num2)}
+          %h2#cart.span3 Total: #{number_to_currency(num2)}
           %br 
           = render partial: 'checkout_button'
         

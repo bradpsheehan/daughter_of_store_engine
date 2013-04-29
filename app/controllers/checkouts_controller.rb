@@ -10,6 +10,7 @@ class CheckoutsController < ApplicationController
       order = create_order(@user, current_cart)
       if order.valid?
         current_cart.destroy
+        session[:post_order_discount] = session[:discount]
         session[:discount] = 0
         redirect_to order_path(order), notice: "Order submitted!"
       else

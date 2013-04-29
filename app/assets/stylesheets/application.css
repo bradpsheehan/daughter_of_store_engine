@@ -16,7 +16,7 @@
 #shopping_cart_summary {
   display-block: inline;
 }
-#cart-total {
+#cart {
   text-align: right;
 }
 .discount-code {
@@ -34,9 +34,9 @@
 .input-small#carts_quantity {
   text-align: right;
 }
-.control-label{
+/*.string_required_control-label{
   display: none;
-}
+}*/
 .strokeme
 {
     color: white;

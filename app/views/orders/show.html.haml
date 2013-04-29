@@ -24,8 +24,8 @@
       %tfoot
         %tr
           %td
-          %td
+          %td You saved #{number_to_currency(session[:post_order_discount])}
           %td{:style => "text-align: right;"}
             = t('total')
-            \:
           %td= number_to_currency(@order.total)
+
