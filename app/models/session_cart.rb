@@ -13,6 +13,10 @@ class SessionCart
     @cart.total(discount)
   end
 
+  def pretotal
+    @cart.pretotal
+  end
+
   def count
     @cart.count
   end

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 %p Do you have a Discount Code?
 = simple_form_for :discounts, method: :get do |f|
   = f.hidden_field current_store.id
   = f.input :name, input_html: { placeholder: 'Discount Code...' }
   = f.submit 'Apply'
+=======
+= form_for :discounts, method: :get do |f|
+  = f.hidden_field current_store.id
+  %p= f.text_field :name, placeholder: 'Discount Code'
+  %p= f.submit 'Apply'
+>>>>>>> f0b6e1ff8e1fffc24c632bc8e40e24206306ba12
 

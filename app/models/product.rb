@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
 
   scope :active, lambda { where(status: 'active') }
 
-   def self.all_cached
+  def self.all_cached
     Rails.cache.fetch('Product.all',expires_in: 1.day) { all }
   end
 
@@ -39,7 +39,7 @@ class Product < ActiveRecord::Base
   end
 
   def promo_price
-    self.price -= (self.price * (self.promotion/100))
+    self.price - (self.price * (self.promotion/100))
   end
 
   def toggle_status

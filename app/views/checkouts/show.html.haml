@@ -7,18 +7,18 @@
       %h3 Shipping Address
       %hr/
       = f.simple_fields_for :shipping_address do |s|
-        = s.input :street
-        = s.input :city,  class:"input-prepend"
-        = s.input :state, class:"input-append"
-        = s.input :zipcode
+        = s.input :street, input_html: { placeholder: 'street' }
+        = s.input :city,  class:"input-prepend", input_html: { placeholder: 'city' }
+        = s.input :state, class:"input-append", input_html: { placeholder: 'state' }
+        = s.input :zipcode, input_html: { placeholder: 'zipcode' }
     .span5
       %h3 Billing Address
       %hr/
       = f.simple_fields_for :billing_address do |b|
-        = b.input :street
-        = b.input :city
-        = b.input :state
-        = b.input :zipcode
+        = b.input :street,input_html: { placeholder: 'street' }
+        = b.input :city, input_html: { placeholder: 'city' }
+        = b.input :state, input_html: { placeholder: 'state' }
+        = b.input :zipcode, input_html: { placeholder: 'zipcode' }
     .span10
       %h3 Payment Information
       %hr/
