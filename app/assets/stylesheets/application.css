@@ -37,6 +37,9 @@
 .control-label{
   display: none;
 }
+#cart {
+  text-align: right;
+}
 .strokeme
 {
     color: white;

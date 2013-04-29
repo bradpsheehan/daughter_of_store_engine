@@ -11,7 +11,7 @@
       = render partial: 'cart_item'
     .shopping_cart_summary
       .pull-right
-        %h3#cart #{number_to_currency(current_cart.total(@discount))}
+        %h3#cart Total: #{number_to_currency(current_cart.total(@discount))}
         = render partial: 'checkout_button'
         %br/
       = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn pull-left', method: :delete
