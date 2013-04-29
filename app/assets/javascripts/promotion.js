@@ -12,7 +12,7 @@ $(document).ready(function() {
     slide: function( event, ui ) {
       $( "#amount" ).val( ui.value );
       var $sliderValue = +$('#amount').val();
-      var $fullPrice = +$('#full-price').text();
+      var $fullPrice = +$('#product_price').val();
       $('#promotion-price').text('Promotional Price: $' + (($fullPrice - (($sliderValue/100) * $fullPrice))).toFixed(2));
     }
   });
@@ -24,13 +24,17 @@ $(document).ready(function() {
 
   var $fullPrice = +$('#full-price').text();
   $('#promotion-price').text('Promotional Price: $' + ($fullPrice - (((+$existingPromotionValue/100) * $fullPrice))).toFixed(2));
+
   $('#amount').keyup(function() {
     var $newPromotionValue = +$(this).val();
-    $('#promotion-price').text('Promotional Price: $' + (+$fullPrice - +((($newPromotionValue/100) * $fullPrice))).toFixed(2));
+    var $fullPrice = +$('#product_price').val();
+    // $('#slider-range-min').text('Promotional Price: $' + (($fullPrice - (($sliderValue/100) * $fullPrice))).toFixed(2));
+    $('#promotion-price').text('Promotional Price: $' + ($fullPrice - +((($newPromotionValue/100) * $fullPrice))).toFixed(2));
+  });
+
+  $('#product_price').keyup(function() {
+    var $newPromotionValue = +$("#amount").val();
+    var $newProductPrice = +$(this).val();
+    $('#promotion-price').text('Promotional Price: $' + ($newProductPrice - +((($newPromotionValue/100) * $newProductPrice))).toFixed(2));
   });
 });
-// ($newPromotionValue/100) * $fullPrice
-
-//1) make an element in the form with the value and call text here and set value to that...
-        //problem-- can't get @product.promotion data to javascript file
-
