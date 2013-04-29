@@ -63,4 +63,10 @@ FactoryGirl.define do
     role 'admin'
   end
 
+  factory :discount do
+    store_id 1
+    name 'Spring Sale'
+    amount 50
+  end
+
 end

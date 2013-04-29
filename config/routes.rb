@@ -2,7 +2,7 @@ require 'resque/server'
 
 StoreEngine::Application.routes.draw do
   mount Resque::Server.new, at: "/resque"
-
+  resources :discounts, only: [:show]
   root to: 'stores#index'
 
   get "/code" => redirect("https://github.com/bradpsheehan/daughter_of_store_engine")
@@ -73,6 +73,7 @@ StoreEngine::Application.routes.draw do
       resources :orders, only: [ :show, :update ]
       resources :order_items, only: [ :update, :destroy]
       resources :categories, except: [ :show ]
+      resources :discounts
     end
   end
 end

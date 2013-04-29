@@ -1,0 +1,22 @@
+.admin-order-index
+  = render partial: 'shared/admin_navigation', locals: { active: :discounts }
+  .span8
+    %h1 Discount Details
+    %hr
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= 'Name'
+          %th= 'Amount'
+      %tbody
+        %tr
+          %td= @discount.name
+          %td= @discount.amount
+          %td= link_to 'Edit', edit_store_admin_discount_path(current_store,@discount)
+    .btn
+      = link_to 'Back', store_admin_discounts_path
+    %br
+    %br
+    %br
+    %br
+    %br

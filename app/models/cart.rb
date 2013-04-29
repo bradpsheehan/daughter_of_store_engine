@@ -16,8 +16,12 @@ class Cart
     end
   end
 
-  def total
-    items.map { |item| item.total }.inject(&:+)
+  def total(discount=nil)
+    total = items.map {|item|item.total}.inject(&:+) 
+    if discount.amount
+      total = total - discount.amount
+    end
+    total
   end
 
   def remove_item(product_id)
@@ -46,6 +50,10 @@ class Cart
   def empty?
     items.empty?
   end
+
+  # def apply_discount(discount)
+  #   self.total - discount
+  # end
 
 private
   def calculate_count
