@@ -13,7 +13,7 @@
     #shopping_cart_summary
       .pull-right
         %h5
-          Total: #{number_to_currency(current_cart.total)}
+          Total: #{number_to_currency(current_cart.total(@discount))}
       .btn-toolbar
         %span.btn-group.pull-right
           = render partial: 'checkout_button'
