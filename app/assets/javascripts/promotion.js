@@ -13,17 +13,17 @@ $(document).ready(function() {
       $( "#amount" ).val( ui.value );
       var $sliderValue = +$('#amount').val();
       var $fullPrice = +$('#full-price').text();
-      $('#promotion-price').text('Promotional Price:' + ($fullPrice - (($sliderValue/100) * $fullPrice)));
+      $('#promotion-price').text('Promotional Price: ' + ($fullPrice - (($sliderValue/100) * $fullPrice)));
     }
   });
   $( "#amount" ).val($( "#slider-range-min" ).slider( "value" ));
 
 
   var $fullPrice = +$('#full-price').text();
-  $('#promotion-price').text('Promotional Price:' + ($fullPrice - ((+$existingPromotionValue/100) * $fullPrice)));
+  $('#promotion-price').text('Promotional Price: ' + ($fullPrice - ((+$existingPromotionValue/100) * $fullPrice)));
   $('#amount').keyup(function() {
     var $newPromotionValue = +$(this).val();
-    $('#promotion-price').text(+$fullPrice - +(($newPromotionValue/100) * $fullPrice));
+    $('#promotion-price').text('Promotional Price: ' + (+$fullPrice - +(($newPromotionValue/100) * $fullPrice)));
   });
 });
 // ($newPromotionValue/100) * $fullPrice
