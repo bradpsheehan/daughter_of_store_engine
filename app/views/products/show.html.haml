@@ -14,8 +14,8 @@
         = t('categories.self')
         \:
       - @product.categories.each do |category|
-        %a{:href => "/products/?category_id=#{category.id}"}
-          %span.label= category.title
+        %span.label= link_to category.title, store_home_path(current_store, category_id: category.id), {:style=>'color:#DCDCDC;', :class => "strokeme"} 
+
     %br/
     -if @product.promotion > 0
       %h4(id="strike-through")
