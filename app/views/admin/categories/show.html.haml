@@ -1,0 +1,15 @@
+/ %th= @category.title
+/ %th= @category.products.each do |product|
+/      = product.title
+
+%thead
+  %h3= link_to("< Back to Categories", {:action => "index" })
+  %tr
+    %th= @category.title
+    - @category.products.each do |product|
+      %th Product Title
+      %th Product Description
+      %tr
+        %td= product.title
+        %td= product.description
+        / This shit is horrible I know ( Need to have a long paginated list of products in the category and perhaps the current promotions)
