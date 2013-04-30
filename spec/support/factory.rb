@@ -4,6 +4,10 @@ FactoryGirl.define do
     title 'Dark Matter'
   end
 
+  factory :random_category, parent: :category do
+    title "Dark Matter  #{Random.rand(100)}"
+  end
+
   factory :order_item do
     product { FactoryGirl.build(:product) }
     order { FactoryGirl.build(:order) }
@@ -35,6 +39,13 @@ FactoryGirl.define do
     end
   end
 
+  factory :random_user, parent: :user do
+    full_name 'Brad Sheehan'
+    email "brad#{Random.rand(100)}@example.com"
+    display_name 'bradsheehan'
+    password 'password'
+  end
+
   factory :uber, parent: :user do
     full_name 'Chris Knight'
     email 'chris@example.com'
@@ -54,6 +65,13 @@ FactoryGirl.define do
     name  'Da best'
     description   'The bestest store'
     path 'a-store'
+    status 'online'
+  end
+
+  factory :random_store, parent: :store do
+    name  "Da best #{Random.rand(100)}"
+    description   'The bestest store'
+    path "a-store-#{Random.rand(100)}"
     status 'online'
   end
 
