@@ -67,6 +67,7 @@ FactoryGirl.define do
     store_id 1
     name 'Spring Sale'
     amount 50
+    percent false
   end
 
 end

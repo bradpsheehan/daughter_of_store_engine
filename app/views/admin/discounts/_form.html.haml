@@ -1,9 +1,26 @@
+/ %script
+/   $(function() {
+/     $('div.wrapper').hide();
+/   });
+
 .span8
   = simple_form_for [ current_store, :admin, @discount ] do |s|
-    = s.input :name, label:"Discount code name:", input_html:{placeholder: "SUPER100OFF"}
-    = s.input :amount, label:"Discount amount in dollars:", input_html:{placeholder: "100.00"}
+    %h5 Code Name
+    = s.input :name, label:false, input_html:{placeholder: "SUPER100OFF"}
+    %h5 Discount Type
+    .wrapper
+      = s.input :percent, as: :radio
+    .btn-group{"data-toggle" => "buttons-radio"}
+      %button#btn-one.btn.btn-primary{"data-toggle" => "button", :name => "option1", :type => "button", :value => "1"} $
+      %button#btn-two.btn.btn-primary{"data-toggle" => "button", :name => "option2", :type => "button", :value => "2"} %
+    %br
+    %br
+    %h5 Amount
+    = s.input :amount, label: false, input_html:{placeholder: "100"}
     = s.hidden_field :store_id, value: current_store.id
     = s.submit "Create Code", class: "btn btn-custom-lighten span2"
+
+
 
 
 / = form_for @discount do |f|

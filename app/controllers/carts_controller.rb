@@ -4,9 +4,12 @@ class CartsController < ApplicationController
     if params[:discounts]
       store = Store.find_by_path(params[:store_path])
       @discount = Discount.find_by_name_and_store_id(params[:discounts][:name],store.id)
-      if @discount
+      if @discount && @discount.percent
+        session[:discount] = @discount.amount / 100
+        flash[:notice] = "Percentage Discount Applied"
+      elsif @discount
         session[:discount] = @discount.amount
-        flash[:notice] = "Cool."
+        flash[:notice] = "Oh Yeah! You just got some dollars off!"
       else
         redirect_to store_cart_path(current_store), :notice  => "Discount doesn't exist"
       end

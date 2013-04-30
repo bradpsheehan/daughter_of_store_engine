@@ -2,3 +2,5 @@
   = f.hidden_field current_store.id
   %p= f.text_field :name, placeholder: 'Discount Code'
   %p= f.submit 'Apply'
+
+/ This should send a GET request to a discounts_controller (or even carts controller?) where it: 1. Looks up to see if discount exists and is valid, 2. If yes - update sessions[:discount] and redirect back to cart, If no – redirect back to cart.
