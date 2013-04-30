@@ -56,8 +56,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    columnize (0.3.6)
     dalli (2.6.2)
+    database_cleaner (0.6.7)
     debug_inspector (0.0.2)
+    debugger (1.5.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
     erb2haml (0.1.5)
       html2haml
@@ -290,6 +298,8 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 3.2.1)
   dalli
+  database_cleaner (~> 0.6.7)
+  debugger
   erb2haml
   factory_girl_rails
   faker

@@ -90,6 +90,11 @@ FactoryGirl.define do
     role 'admin'
   end
 
+  factory :category_product do 
+    category_id 1
+    product_id 1
+  end
+
   factory :discount do
     store_id 1
     name 'Spring Sale'

@@ -31,6 +31,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'cane'
   gem 'reek'
+  gem 'debugger'
   gem 'capybara'
   gem 'simplecov'
   gem 'newrelic_rpm'
@@ -38,6 +39,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'bullet', :group => 'development'
   gem 'xmpp4r'
+  gem 'database_cleaner', "~> 0.6.7"
 end
 
 group :test do
