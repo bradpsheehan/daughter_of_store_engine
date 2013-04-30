@@ -1,13 +1,13 @@
 %thead
   %tr
     %th
-      = category.title
-      = link_to t('crud.edit'), edit_store_admin_category_path(current_store, category)
-%tbody
-  - @categories.each do |category|
-    %tr
-      %td= category.title
-  - if category.products.count == 0
-    %tr
-      %td= t('categories.noproducts')
+      %h4= link_to "#{category.title}", store_admin_category_path(current_store, category)
+      %h6= link_to "-Edit", edit_store_admin_category_path(current_store, category)
+/ %tbody
+/   - @categories.each do |category|
+/     %tr
+/       %td= category.title
+/   - if category.products.count == 0
+/     %tr
+/       %td= t('categories.noproducts')
 
