@@ -50,14 +50,14 @@ $(document).ready(function() {
 
   $('#a').css('float', 'left')
   $('#b').css('float', 'left')
-  $('#b').css('margin-left', '25px')
-  $('#b').css('margin-top', '30px')
+  $('#b').css('margin-left', '22px')
+  $('#b').css('margin-top', '29px')
 
   $('#column-two').css('clear', 'left');
   $('#column-two').css('float', 'left');
 
   $('#d').css('position', 'relative')
-  $('#d').css('margin-top', '32px')
+  $('#d').css('margin-top', '33px')
   $('#d').css('left', '112px')
   $('#c').css('float', 'left')
 
