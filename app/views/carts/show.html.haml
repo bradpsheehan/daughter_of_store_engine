@@ -18,7 +18,7 @@
           %h2#cart Total: #{number_to_currency(num2)}
           = render partial: 'checkout_button'
         - else
-          %h2#cart.span3 Total: #{number_to_currency(num2)}
+          %h2#cart Total: #{number_to_currency(num2)}
           %br
           = render partial: 'checkout_button'
       = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn pull-left', method: :delete
