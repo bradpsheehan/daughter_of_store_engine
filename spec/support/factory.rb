@@ -92,7 +92,7 @@ FactoryGirl.define do
 
   factory :category_product do 
     category_id 1
-    product_id 1
+    product_id  1
   end
 
   factory :discount do

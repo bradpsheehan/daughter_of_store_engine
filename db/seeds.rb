@@ -20,11 +20,12 @@ def seed_categories(store, count)
   count.times do |i|
     begin
       title = Faker::Lorem.words(2).join(" ")
+      puts "Creating Category #{title}"
       store.categories.create!(title: title,
                                store_id: store.id)
       puts "Category #{title} created for Store #{store.id}"
-    rescue
-      puts "Category name taken! Retrying."
+    rescue Exception => exception
+      puts "Category name taken! Retrying. #{exception}"
       retry
     end
   end

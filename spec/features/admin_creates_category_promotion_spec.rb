@@ -46,7 +46,7 @@ describe "As an logged in Administrator of a store" do
       visit store_admin_manage_path(@store)
 
       click_link "Categories"
-      click_link "-Edit"
+      click_link "Edit"
  
       page.should have_content("Promotion")
 
