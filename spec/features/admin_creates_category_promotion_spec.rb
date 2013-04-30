@@ -31,10 +31,12 @@ describe "As an logged in Administrator of a store" do
     #  page.should have_content("Product Promotion Form")
     # end
 
-    it 'allows me to create a new promotion for a category', js: true do
+    it 'allows me to create a new promotion for a category' do
       admin = FactoryGirl.create(:random_user)
       @store = FactoryGirl.create(:random_store)
       @category = FactoryGirl.create(:random_category, store_id: @store.id)
+      @product = FactoryGirl.create(:random_product, store_id: @store.id)
+      @category.products << @product
       Role.promote(admin, @store, 'admin')
 
       visit login_path
@@ -45,18 +47,28 @@ describe "As an logged in Administrator of a store" do
 
       click_link "Categories"
       click_link "-Edit"
+ 
+      page.should have_content("Promotion")
 
-      click_link "New Category Promotion"
-
-      page.should have_content("Promotion Title")
-
-      fill_in :promotion, with: 10.0
+      fill_in :category_promotion, with: 10.0
       
       click_button "Submit"
 
       visit store_home_path(@store)
 
-      click_link "Select a Category"
+      find('.dropdown-toggle').click
+
+      # click_button "dropdown-toggle"
+
+      puts "Category Title: #{@category.title}"
+
+      category_html_id = "#category-#{@category.title.gsub(/\s/,'-')}"
+
+      find(category_html_id).click
+
+      click_link "#{@product.title}"
+
+      page.should have_content("Promo Price")
     end
   end
 end

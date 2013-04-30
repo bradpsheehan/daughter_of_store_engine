@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :random_category, parent: :category do
-    title "Dark Matter  #{Random.rand(100)}"
+    title "Dark Matter #{Random.rand(100)}"
   end
 
   factory :order_item do
@@ -21,7 +21,16 @@ FactoryGirl.define do
 
   factory :product do
     categories { [FactoryGirl.build(:category)] }
-    title 'Itchy Sweater'
+    title "Itchy Sweater"
+    description 'Hurts so good'
+    price 12.99
+    status 'active'
+    promotion 0
+  end
+
+  factory :random_product, parent: :product do
+    categories { [FactoryGirl.build(:category)] }
+    title "Itchy Sweater #{Random.rand(100)}"
     description 'Hurts so good'
     price 12.99
     status 'active'
