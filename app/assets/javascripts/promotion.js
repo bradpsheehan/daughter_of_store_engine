@@ -1,6 +1,5 @@
 $(document).ready(function() {
   var $existingPromotionValue = $('#existing-promotion-value').text();       //hackity-hack
-  // var $fullPrice = $('#full-price').text();
   $('#existing-promotion-value').css('opacity', 0);                        //hackity-hack
   $('#full-price').css('opacity', 0);                                     //hackity-hack
 
@@ -20,7 +19,6 @@ $(document).ready(function() {
 
   $('#amount').css('width', '50px')
   $('#amount').prepend("<span>$</span>")
-  $('#promotion-price').css('margin-top', '10px');
 
   var $fullPrice = +$('#full-price').text();
   $('#promotion-price').text('Promotional Price: $' + ($fullPrice - (((+$existingPromotionValue/100) * $fullPrice))).toFixed(2));
@@ -42,10 +40,26 @@ $(document).ready(function() {
     }
   });
 
-
   $('#product_price').keyup(function() {
     var $newPromotionValue = +$("#amount").val();
     var $newProductPrice = +$(this).val();
     $('#promotion-price').text('Promotional Price: $' + ($newProductPrice - +((($newPromotionValue/100) * $newProductPrice))).toFixed(2));
   });
+
+  $('#promotion-price').addClass('strokememore')
+
+  $('#a').css('float', 'left')
+  $('#b').css('float', 'left')
+  $('#b').css('margin-left', '25px')
+  $('#b').css('margin-top', '30px')
+
+  $('#column-two').css('clear', 'left');
+  $('#column-two').css('float', 'left');
+
+  $('#d').css('position', 'relative')
+  $('#d').css('margin-top', '32px')
+  $('#d').css('left', '112px')
+  $('#c').css('float', 'left')
+
+  $('.control-group.radio_buttons.required.product_status').css('clear', 'left');
 });
