@@ -2,7 +2,7 @@
 %link{:href => "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
 %script{:src => "http://code.jquery.com/jquery-1.9.1.js"}
 %script{:src => "http://code.jquery.com/ui/1.10.2/jquery-ui.js"}
-%link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
+/ %link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
 = simple_form_for [current_store, :admin, @product] do |f|
   = f.input :title, label: 'Title', input_html: { placeholder: t('placeholder.product.title') }
   = f.input :description, input_html: { placeholder: t('placeholder.product.description') }

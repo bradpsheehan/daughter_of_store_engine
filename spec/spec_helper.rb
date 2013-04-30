@@ -12,6 +12,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara/rspec'
+# Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,5 +43,20 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
   config.include Sorcery::TestHelpers::Rails
+  ###for testing the JS alert boxes...also added database cleaner
+  ###to the gemfile
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
 

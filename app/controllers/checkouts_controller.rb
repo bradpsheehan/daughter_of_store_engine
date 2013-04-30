@@ -8,6 +8,7 @@ class CheckoutsController < ApplicationController
   def create
     if @user.save
       order = create_order(@user, current_cart)
+
       if order.valid?
         current_cart.destroy
         session[:post_order_discount] = session[:discount]

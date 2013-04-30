@@ -28,9 +28,20 @@ $(document).ready(function() {
   $('#amount').keyup(function() {
     var $newPromotionValue = +$(this).val();
     var $fullPrice = +$('#product_price').val();
-    // $('#slider-range-min').text('Promotional Price: $' + (($fullPrice - (($sliderValue/100) * $fullPrice))).toFixed(2));
+    var $amt = $(this).val()
+    $('#slider-range-min').slider('value', $amt);
     $('#promotion-price').text('Promotional Price: $' + ($fullPrice - +((($newPromotionValue/100) * $fullPrice))).toFixed(2));
+    if(+$('#amount').val() > 100) {
+      $('#promotion-price').text('Promotional Price: $0');
+      $('#amount').val(100);
+      alert("Promotion value cannot exceed 100%")
+    }
+    if(isNaN($('#amount').val())) {
+      $('#amount').val(0);
+      alert('Numbers only, please')
+    }
   });
+
 
   $('#product_price').keyup(function() {
     var $newPromotionValue = +$("#amount").val();
