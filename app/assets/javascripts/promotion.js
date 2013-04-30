@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('#existing-promotion-value').css('opacity', 0);                        //hackity-hack
   $('#full-price').css('opacity', 0);                                     //hackity-hack
 
+
   $( "#slider-range-min" ).slider({
     range: "min",
     value: $existingPromotionValue,
