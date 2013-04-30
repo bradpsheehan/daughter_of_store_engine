@@ -1,10 +1,7 @@
-%h4= link_to "New Category Promotion"
-%br
-
 %br
 = simple_form_for [current_store, :admin, @category] do |f|
   = f.input :title, label: "Category Title",input_html: { placeholder: t('placeholder.category.title') }
-  / = f.input :promotion
+  = f.input :promotion
   = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
 
 
