@@ -37,7 +37,7 @@ class Order < ActiveRecord::Base
         end
         subtotal = Hash.new(0)
         order.order_items.each do |item|
-          subtotal[:amount] += item.unit_price.truncate
+          subtotal[:amount] += item.unit_price.truncate*item.quantity
         end
         if session[:discount]
           order.total = subtotal[:amount] - session[:discount]

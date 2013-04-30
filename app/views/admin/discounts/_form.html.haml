@@ -1,7 +1,7 @@
 .span8
   = simple_form_for [ current_store, :admin, @discount ] do |s|
-    = s.input :name
-    = s.input :amount
+    = s.input :name, label:"Discount code name:", input_html:{placeholder: "SUPER100OFF"}
+    = s.input :amount, label:"Discount amount in dollars:", input_html:{placeholder: "100.00"}
     = s.hidden_field :store_id, value: current_store.id
     = s.submit "Create Code", class: "btn btn-custom-lighten span2"
 

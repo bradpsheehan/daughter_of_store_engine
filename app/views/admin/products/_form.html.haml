@@ -4,7 +4,7 @@
 %script{:src => "http://code.jquery.com/ui/1.10.2/jquery-ui.js"}
 %link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
 = simple_form_for [current_store, :admin, @product] do |f|
-  = f.input :title, input_html: { placeholder: t('placeholder.product.title') }
+  = f.input :title, label: 'Title', input_html: { placeholder: t('placeholder.product.title') }
   = f.input :description, input_html: { placeholder: t('placeholder.product.description') }
   = f.association :categories
   = f.input :price, wrapper: :prepend do
@@ -19,13 +19,6 @@
   %br
   = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
   = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
-
-
-
-
-
-
-
 
   #full-price
     = @product.price
