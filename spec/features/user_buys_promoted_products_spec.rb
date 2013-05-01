@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'As a user viewing the products of a store' do
   before(:each) do
-    @user = FactoryGirl.create(:user)
     @store = FactoryGirl.create(:store)
     @product = FactoryGirl.create(:product, store_id: @store.id, promotion: 87.96)
   end
@@ -30,8 +29,9 @@ describe 'As a user viewing the products of a store' do
       fill_in 'user_billing_address_attributes_city', with: 'Denver'
       fill_in 'user_billing_address_attributes_state', with: 'CO'
       fill_in 'user_billing_address_attributes_zipcode', with: '80210'
+      save_and_open_page
       click_button 'Checkout'
-      expect( page ).should have_content "$1.56"
+      page.should have_content "$11.42"
     end
   end
 end
