@@ -56,8 +56,6 @@ describe "admin dashboard" do
       it "displays each product of the order with associated data" do
         expect(page).to have_content(@product.title)
         expect(page).to have_link(@product.title)
-        # expect(page).to have_link store_admin_product_path(@store.path, @product.id)
-        # expect(page).to have_xpath("//a[@href='#{store_admin_product_path(@store, @product)}']")
         expect(find("input#admin_order_item_quantity").value.to_i).to eq @order_item.quantity
         expect(page).to have_content(@order_item.unit_price)
         expect(page).to have_content(@order_item.subtotal)

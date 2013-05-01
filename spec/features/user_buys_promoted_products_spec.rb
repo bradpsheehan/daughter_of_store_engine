@@ -6,12 +6,13 @@ describe 'As a user viewing the products of a store' do
     @product = FactoryGirl.create(:product, store_id: @store.id, promotion: 87.96)
   end
   context 'and the user sees a product on sale' do
-    it 'can buy it at the promotional price' do
+    it 'can buy it at the promotional price', js: true do
       visit store_home_path(@store)
       click_link "#{@product.title}"
       page.should have_content "Promo Price"
       click_button 'Add to Cart'
       visit store_cart_path(@store)
+      # click_button "Cart (1)"   ?
       click_link 'Checkout'
       click_link 'Continue'
       expect(page).to have_content("Shipping Address")

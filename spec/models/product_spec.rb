@@ -1,9 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Product do
-  
-  # let!(:store){Store.new(name:'storename',path:'storepath',description:'desc',status:'active',theme:'metal')}
- 
+
   let(:category){Category.new(store_id:1,title:'cat 1')}
   let(:category1){Category.new(store_id:1,title:'cat 1')}
 

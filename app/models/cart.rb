@@ -17,7 +17,7 @@ class Cart
   end
 
   def pretotal
-    total = items.map {|item|item.total}.inject(&:+) 
+    total = items.map {|item|item.total}.inject(&:+)
   end
 
   def remove_item(product_id)
@@ -46,10 +46,6 @@ class Cart
   def empty?
     items.empty?
   end
-
-  # def apply_discount(discount)
-  #   self.total - discount
-  # end
 
 private
   def calculate_count

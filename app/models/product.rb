@@ -22,12 +22,6 @@ class Product < ActiveRecord::Base
 
   scope :active, lambda { where(status: 'active') }
 
-  # after_save :expire_cache
-
-  # def self.expire_cache
-  #   Rails.cache.expire('Product.all')
-  # end
-
   def self.all_cached
     Rails.cache.fetch('Product.all',expires_in: 1.day) { all }
   end
