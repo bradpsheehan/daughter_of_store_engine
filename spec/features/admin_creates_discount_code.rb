@@ -54,8 +54,20 @@ describe 'an admin can choose products to put on sale for their store' do
         fill_in "discount_amount", :with => 50
         click_button "Create Code"
         current_path.should eq store_admin_discounts_path(@store)
-        page.should have_content "Spring Fever"
         page.should have_selector('h1', text: 'Discounts')
+        page.should have_content "Spring Fever"
+      end
+
+      it "can create a new dollar amount discount" do
+        discount = FactoryGirl.create(:discount)
+        visit new_store_admin_discount_path(@store)
+        page.should have_content "$"
+        page.should have_content "%"
+        click_button $
+      end
+
+      it "can creat a new percentage discount"  do
+        
       end
 
     end

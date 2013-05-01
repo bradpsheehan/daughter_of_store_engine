@@ -1,9 +1,35 @@
+:coffee
+  $ ->
+    $('div.wrapper').hide()
+
+    # get current state of radio
+    selectedType = if $('.discount_percent input:checked').val() is "false" then "dollar" else "percent"
+
+    # update toggle buttons to match
+    $("#btn-\#{ selectedType }").addClass('active')
+
+    # wire up event handler to make toggle buttons update radio buttons
+    $(document).on 'click', 'button[data-faux=radio]', (e) ->
+      $('button[data-faux=radio]').removeClass('active')
+      $(this).addClass('active')
+      identifier = if $(this).attr('id') is "btn-percent" then "true" else "false"
+      $("#discount_percent_\#{identifier}").prop('checked', true)
+
 .span8
   = simple_form_for [ current_store, :admin, @discount ] do |s|
-    = s.input :name, label:"Discount code name:", input_html:{placeholder: "SUPER100OFF"}
-    = s.input :amount, label:"Discount amount in dollars:", input_html:{placeholder: "100.00"}
+    %h4 Code Name
+    = s.input :name, label:false, input_html:{placeholder: "Ex: SUPER100OFF"}
+    %h4 Discount
+    .wrapper
+      = s.input :percent, label:false, as: :radio
+    .btn-group{style: "float: left"}
+      %button#btn-dollar.btn.btn-primary{"data-faux" => "radio", :name => "option1", :type => "button", :value => "1"} $
+      %button#btn-percent.btn.btn-primary{"data-faux" => "radio", :name => "option2", :type => "button", :value => "2"} %
+    = s.input :amount, label: false, input_html:{placeholder: "Ex: 100", style: "width: 10%;"}
     = s.hidden_field :store_id, value: current_store.id
-    = s.submit "Create Code", class: "btn btn-custom-lighten span2"
+    = s.submit "Create", class: "btn btn-custom-lighten span2",style: "display: block;"
+
+
 
 
 / = form_for @discount do |f|

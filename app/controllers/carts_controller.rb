@@ -1,16 +1,49 @@
 class CartsController < ApplicationController
-  def show
-    @discount ||= Discount.new
-    if params[:discounts]
-      store = Store.find_by_path(params[:store_path])
-      @discount = Discount.find_by_name_and_store_id(params[:discounts][:name],store.id)
-      if @discount
-        session[:discount] = @discount.amount
-        flash[:notice] = "Cool."
-      else
-        redirect_to store_cart_path(current_store), :notice  => "Discount doesn't exist"
-      end
+
+  class CartCalculator
+    def initialize(cart,discount)
+      @cart = cart
+      @discount = discount
     end
+
+    attr_reader :cart, :discount
+
+    def sub_total
+      cart.pretotal
+    end
+
+    def grand_total
+      discount.apply(cart)
+    end
+
+    def savings
+      sub_total - grand_total
+    end
+
+    def discount_applied?
+      grand_total != sub_total
+    end
+  end
+
+  def load_discount(discount_name)
+    Discount.find_by_name_and_store_id(discount_name,current_store.id) || Discount.not_found
+  end
+
+  def discount_has_been_specified?
+    params[:discounts]
+  end
+
+  def show
+    @discount = Discount.not_found
+
+    if discount_has_been_specified?
+      @discount = load_discount(params[:discounts][:name])
+      session[:discount] = @discount.discount_amount
+      flash[:notice] = @discount.message
+    end
+
+    @cart_calculator = CartCalculator.new(current_cart,@discount)
+
   end
 
   def update
