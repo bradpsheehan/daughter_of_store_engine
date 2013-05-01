@@ -8,5 +8,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by_guid!(params[:guid])
     @order_items = @order.order_items
+    @order_savings = flash[:post_order_discount]
   end
 end

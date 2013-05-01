@@ -38,7 +38,7 @@ class CartsController < ApplicationController
 
     if discount_has_been_specified?
       @discount = load_discount(params[:discounts][:name])
-      session[:discount] = @discount.discount_amount
+      session[:discount_id] = @discount.discount_id
       flash[:notice] = @discount.message
     end
 
