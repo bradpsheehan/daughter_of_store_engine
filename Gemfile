@@ -42,7 +42,6 @@ group :development, :test do
   gem 'bullet', :group => 'development'
   gem 'xmpp4r'
   gem 'database_cleaner', '~> 0.6.7'
-  # gem 'capybara-webkit', '~> 0.14.2'
 end
 
 group :test do

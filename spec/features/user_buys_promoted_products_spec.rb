@@ -31,6 +31,7 @@ describe 'As a user viewing the products of a store' do
       fill_in 'user_billing_address_attributes_state', with: 'CO'
       fill_in 'user_billing_address_attributes_zipcode', with: '80210'
       click_button 'Checkout'
+      save_and_open_page
       expect( page ).should have_content "$1.56"
     end
   end

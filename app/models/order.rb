@@ -44,7 +44,6 @@ class Order < ActiveRecord::Base
           order.save!
         else
           order.total = subtotal[:amount]
-          # order.store_id ||= session[:cart].keys.pop
           order.save!
         end
       end
