@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Discount do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a valid factory' do
+    expect(FactoryGirl.create(:discount)).to be_valid
+  end
+
+  it 'is invalid without a title' do
+    expect(FactoryGirl.build(:discount, name: '')).to_not be_valid
+  end
 end
