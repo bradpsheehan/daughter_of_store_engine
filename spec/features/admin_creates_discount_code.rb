@@ -66,7 +66,7 @@ describe 'an admin can choose products to put on sale for their store' do
         click_button $
       end
 
-      it "can creat a new percentage discount"  do
+      xit "can creat a new percentage discount"  do
         
       end
 

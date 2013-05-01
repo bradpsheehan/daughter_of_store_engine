@@ -29,11 +29,6 @@ describe Store do
       store.to_param.should eq 'a-store'
     end
 
-    # it 'can #not_found' do
-    #   store.not_found
-    #   expect(raise ActionController::RoutingError.new('Not found'))
-    # end
-
     it 'can #pending?' do
       expect(store.pending?).to eq false
       expect(store2.pending?).to eq true
