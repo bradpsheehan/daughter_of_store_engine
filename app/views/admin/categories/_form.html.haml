@@ -1,9 +1,29 @@
-%br
-= simple_form_for [current_store, :admin, @category] do |f|
-  = f.input :title, label: "Category Title",input_html: { placeholder: t('placeholder.category.title') }
-  = f.input :promotion
-  = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
+/ %br
+/ = simple_form_for [current_store, :admin, @category] do |f|
+/   = f.input :title, label: "Category Title",input_html: { placeholder: t('placeholder.category.title') }
+/   = f.input :promotion
+/   = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
 
 
 
 / Either create a form for a new category promotion ( % off)    |   or create an option slider like for products
+= simple_form_for [current_store, :admin, @category] do |f|
+  = f.input :title, label: "Category Title", input_html: { placeholder: t('placeholder.category.title') }
+  #column-one
+    #a
+    #b
+  #column-two
+    #c
+      = f.input :promotion, label: "Promotional Percent Off", wrapper: :append do
+        = f.input_field :promotion, class: 'span1', id: 'amount', :style => "color: #f6931f; font-weight: bold;", :type => "text", :maxlength => 3
+        = content_tag :span, t('%'), :class => "add-on"
+    #d
+      #slider-range-min
+  %br
+  %br
+  %br
+  %br
+  #column-3
+    #c
+    %br
+    = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
