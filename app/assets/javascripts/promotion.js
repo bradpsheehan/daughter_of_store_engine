@@ -63,4 +63,19 @@ $(document).ready(function() {
   $('#c').css('float', 'left')
 
   $('.control-group.radio_buttons.required.product_status').css('clear', 'left');
+
+
+
+
+
+  if($('.order-savings-total').text() == "You saved $0.00") {
+    $('.order-savings-total').hide();
+  }
+  if($('.order-savings-total').text() == "You saved") {
+    $('.order-savings-total').hide();
+  }
+
+
+
+
 });

@@ -24,8 +24,15 @@
       %tfoot
         %tr
           %td
-          %td You saved #{number_to_currency(@order_savings)}
+        -if @order.find_product_promotion != []
+          %td.order-savings-total You saved #{@order.savings}
           %td{:style => "text-align: right;"}
             = t('total')
           %td= number_to_currency(@order.total_in_dollars_and_cents)
+        -else
+          %td.order-savings-total You saved #{number_to_currency(@order_savings)}
+          %td{:style => "text-align: right;"}
+            = t('total')
+          %td= number_to_currency(@order.total_in_dollars_and_cents)
+
 

@@ -19,6 +19,44 @@ class Order < ActiveRecord::Base
     guid
   end
 
+  def savings
+    original_value - promo_value
+  end
+
+  def original_value
+    order_items.inject(0) do |memo, order_item|
+      memo += order_item.product.price
+      memo
+    end
+  end
+
+  def promo_value
+    unless find_product_promotion.class == BigDecimal
+      find_product_promotion.inject(0) do |memo, price|
+        memo += price
+        memo
+      end
+    else
+      find_product_promotion.truncate
+    end
+  end
+
+  def find_product_promotion
+    promos = order_items.inject([]) do |memo, order_item|
+      memo << order_item.product.promo_price
+      memo
+    end
+    originals = order_items.inject([]) do |memo, order_item|
+      memo << order_item.product.price
+      memo
+    end
+    if promos == originals
+      return []
+    else
+      return promos
+    end
+  end
+
   def self.by_status(status)
     if status.present? && status != 'all'
       order.where(status: status)
