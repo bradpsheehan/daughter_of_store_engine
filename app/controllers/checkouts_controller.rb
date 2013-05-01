@@ -8,6 +8,7 @@ class CheckoutsController < ApplicationController
   def create
     if @user.save
       order = create_order(@user, current_cart)
+
       if order.valid?
         current_cart.destroy
         session[:post_order_discount] = session[:discount]
@@ -47,7 +48,7 @@ private
   end
 
   def create_order(user, cart_items)
-    Order.create_pending_order(user, cart_items, session).tap do |order|
+      Order.create_pending_order(user, cart_items, session).tap do |order|
       Resque.enqueue(OrderConfirmEmailJob, user, order.id, order.total)
     end
   end

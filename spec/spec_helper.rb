@@ -12,6 +12,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,6 +42,7 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
   config.include Sorcery::TestHelpers::Rails
+
   config.use_transactional_fixtures = false
 
   config.before(:suite) do

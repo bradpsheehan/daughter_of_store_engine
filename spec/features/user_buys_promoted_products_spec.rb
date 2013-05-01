@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'As a user viewing the products of a store' do 
-  before(:each) do 
+describe 'As a user viewing the products of a store' do
+  before(:each) do
     @user = FactoryGirl.create(:user)
     @store = FactoryGirl.create(:store)
     @product = FactoryGirl.create(:product, store_id: @store.id, promotion: 87.96)

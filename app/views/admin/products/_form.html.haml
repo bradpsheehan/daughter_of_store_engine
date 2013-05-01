@@ -1,20 +1,28 @@
-
 = simple_form_for [current_store, :admin, @product] do |f|
   = f.input :title, label: 'Title', input_html: { placeholder: t('placeholder.product.title') }
   = f.input :description, input_html: { placeholder: t('placeholder.product.description') }
   = f.association :categories
-  = f.input :price, wrapper: :prepend do
-    = content_tag :span, t('bling.bling'), :class => "add-on"
-    = f.input_field :price, placeholder: '9.99', class: 'span1'
-  = f.input :promotion, label: "Promotional Percent Off", wrapper: :append do
-    = f.input_field :promotion, class: 'span1', id: 'amount', :style => "border: 0; color: #f6931f; font-weight: bold;", :type => "text", :maxlength => 3
-    = content_tag :span, t('%'), :class => "add-on"
-  #slider-range-min
-  #promotion-price
+  #column-one
+    #a
+      = f.input :price, wrapper: :prepend do
+        = content_tag :span, t('bling.bling'), :class => "add-on"
+        = f.input_field :price, placeholder: '9.99', class: 'span1'
+    #b
+      #promotion-price
+  #column-two
+    #c
+      = f.input :promotion, label: "Promotional Percent Off", wrapper: :append do
+        = f.input_field :promotion, class: 'span1', id: 'amount', :style => "color: #f6931f; font-weight: bold;", :type => "text", :maxlength => 3
+        = content_tag :span, t('%'), :class => "add-on"
+    #d
+      #slider-range-min
   %br
   %br
-  = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
-  = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
+  %br
+  %br
+  #column-3
+    = f.input :status, as: :radio_buttons, collection: ['active', 'retired']
+    = f.button :submit, t('submit'), class:'btn btn-custom-lighten'
 
   #full-price
     = @product.price

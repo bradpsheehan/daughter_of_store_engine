@@ -37,11 +37,33 @@ describe 'an admin can put a product on sale with a promotion' do
           expect(page).to have_content(3.25)
         end
 
-        it 'displays the adjusted promotional price on the page' do
-          pending
+        it 'displays the adjusted promotional price on the page', :js => true do
           visit edit_store_admin_product_path(@store, @product)
           fill_in "amount", with: 75
-          page.should have_content("Promotional Price: 45.75")
+          current_path.should eq edit_store_admin_product_path(@store, @product)
+          page.should have_content("Promotional Price: $3.25")
+        end
+
+        it 'triggers an alert when a non-number is entered, and does not update price', :js => true do
+          visit edit_store_admin_product_path(@store, @product)
+          fill_in "amount", with: 'a'
+          page.driver.browser.switch_to.alert.accept
+          page.should have_content("Promotional Price: $NaN")
+          click_button "Submit"
+          expect(page).to have_content "Successfully updated product"
+          visit store_product_path(@store, @product)
+          expect(page).to have_content(12.99)
+        end
+
+        it 'triggers an alert when a value greater than 100 is entered, and assigns product promo of 100%', :js => true do
+          visit edit_store_admin_product_path(@store, @product)
+          fill_in "amount", with: 200
+          page.driver.browser.switch_to.alert.accept
+          page.should have_content("Promotional Price: $0")
+          click_button "Submit"
+          expect(page).to have_content "Successfully updated product"
+          visit store_product_path(@store, @product)
+          expect(page).to have_content(0)
         end
       end
     end
