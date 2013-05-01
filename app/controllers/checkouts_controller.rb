@@ -10,9 +10,14 @@ class CheckoutsController < ApplicationController
       order = create_order(@user, current_cart)
 
       if order.valid?
+        @cart_calculator = CartsController::CartCalculator.new(current_cart,current_discount)
+
+        # order should store the amount of savings
+        flash[:post_order_discount] = @cart_calculator.savings
+
+        session[:discount_id] = nil
         current_cart.destroy
-        session[:post_order_discount] = session[:discount]
-        session[:discount] = 0
+
         redirect_to order_path(order), notice: "Order submitted!"
       else
         redirect_to store_cart_path(current_store), notice: "Checkout failed."
@@ -47,9 +52,14 @@ private
     @user.build_billing_address if @user.billing_address.nil?
   end
 
+  def current_discount
+    db_discount = Discount.find_by_id(session[:discount_id])
+    Discount.convert_to_discount_object(db_discount)
+  end
+
   def create_order(user, cart_items)
-      Order.create_pending_order(user, cart_items, session).tap do |order|
-      Resque.enqueue(OrderConfirmEmailJob, user, order.id, order.total)
+      Order.create_pending_order(user, cart_items, current_discount).tap do |order|
+        Resque.enqueue(OrderConfirmEmailJob, user, order.id, order.total)
     end
   end
 end
