@@ -2,7 +2,7 @@ require 'feature_spec_helper'
 
 describe "As an logged in Administrator of a store" do
   context "and I am in the admin dashboard" do
-  
+
 
     it 'allows me to create a new promotion for a category' do
       admin = FactoryGirl.create(:random_user)
@@ -38,9 +38,6 @@ describe "As an logged in Administrator of a store" do
       click_link "#{@product.title}"
 
       page.should have_content("Promo Price")
-      fill_in :promotion, with: 10.0
-
-      click_button "Submit"
     end
   end
 end
