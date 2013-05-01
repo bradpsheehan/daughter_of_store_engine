@@ -18,6 +18,7 @@ gem 'html2haml'
 gem 'newrelic_rpm'
 gem 'heroku'
 gem 'dalli'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -45,6 +46,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
 end
