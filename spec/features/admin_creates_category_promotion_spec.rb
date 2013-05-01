@@ -38,9 +38,6 @@ describe "As an logged in Administrator of a store" do
       click_link "#{@product.title}"
 
       page.should have_content("Promo Price")
-      fill_in :promotion, with: 10.0
-
-      click_button "Submit"
     end
   end
 end
