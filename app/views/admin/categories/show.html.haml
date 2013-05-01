@@ -1,0 +1,17 @@
+.admin-order-show
+  .span8
+    %h3= link_to("< Back to Categories", {:action => "index" })
+    %h2= @category.title
+    %table.table
+      %tr
+        %th Product Name
+        %th Product Description  
+        %th Product Price
+        %th Product Promotion
+        - @category.products.each do |p|
+          %tr
+          %td= p.title
+          %td= p.description
+          %td= p.price
+          %td= p.promotion
+          

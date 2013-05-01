@@ -11,17 +11,14 @@
       = render partial: 'cart_item'
     .shopping_cart_summary
       .pull-right
-        - num1 = current_cart.pretotal
-        - num2 = current_cart.total(@discount)
-        - if num2 != num1
-          %h4#cart You saved #{number_to_currency(num1-num2)}!!
-          %h2#cart Total: #{number_to_currency(num2)}
+        - if @cart_calculator.discount_applied?
+          %h4#cart You saved #{number_to_currency(@cart_calculator.savings)}!!
+          %h2#cart Total: #{number_to_currency(@cart_calculator.grand_total)}
           = render partial: 'checkout_button'
         - else
-          %h2#cart.span3 Total: #{number_to_currency(num2)}
-          %br 
+          %h2#cart Total: #{number_to_currency(@cart_calculator.grand_total)}
+          %br
           = render partial: 'checkout_button'
-        
       = button_to t('cart.empty'), store_cart_path(current_store), class: 'btn pull-left', method: :delete
       .discount-code
         = render partial: 'discount'
