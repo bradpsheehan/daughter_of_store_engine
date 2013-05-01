@@ -1,4 +1,5 @@
 .admin-order-show
+  = render partial: 'shared/admin_navigation', :locals => { active: false }
   .span8
     %h3= link_to("< Back to Categories", {:action => "index" })
     %h2= @category.title
