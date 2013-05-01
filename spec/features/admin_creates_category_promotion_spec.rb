@@ -46,10 +46,8 @@ describe "As an logged in Administrator of a store" do
       page.should have_content("Promotion Title")
 
       fill_in :promotion, with: 10.0
-      
-      click_button, "Submit"
 
-
+      click_button "Submit"
     end
   end
 end
