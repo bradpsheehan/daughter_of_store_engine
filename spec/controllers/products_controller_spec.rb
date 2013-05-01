@@ -3,7 +3,6 @@ require 'spec_helper'
 describe ProductsController do
   describe 'GET #index' do
     it "index action should render index template" do
-      # binding.pry
       store = FactoryGirl.create(:store)
       controller.stub(:current_store).and_return(store)
       get :index

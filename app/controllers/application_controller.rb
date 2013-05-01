@@ -15,13 +15,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def require_admin_or_stocker
-  #   @role = current_store.admin_or_stocker?(current_user)
-  #   if current_store.nil? || !@role
-  #     not_authenticated
-  #   end
-  # end
-
   def require_uber
     not_authenticated unless current_user && current_user.uber?
   end
