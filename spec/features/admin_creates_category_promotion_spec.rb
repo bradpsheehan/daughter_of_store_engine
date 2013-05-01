@@ -20,11 +20,11 @@ describe "As an logged in Administrator of a store" do
 
       click_link "Categories"
       click_link "Edit"
- 
+
       page.should have_content("Promotion")
 
       fill_in :category_promotion, with: 10.0
-      
+
       click_button "Submit"
 
       visit store_home_path(@store)
