@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  var $existingPromotionValue = $('#existing-promotion-value').text();       //hackity-hack
-  $('#existing-promotion-value').css('opacity', 0);                        //hackity-hack
-  $('#full-price').css('opacity', 0);                                     //hackity-hack
+  var $existingPromotionValue = $('#existing-promotion-value').text();
+  $('#existing-promotion-value').css('opacity', 0);
+  $('#full-price').css('opacity', 0);
 
 
   $( "#slider-range-min" ).slider({
