@@ -64,6 +64,7 @@ FactoryGirl.define do
   end
 
   factory :address do
+    user_id  1
     street  '43 Logan Street'
     state   'CA'
     zipcode '90100'

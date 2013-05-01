@@ -69,7 +69,6 @@ StoreEngine::Application.routes.draw do
           post :toggle_status
         end
       end
-      resources :promotions
       resources :orders, only: [ :show, :update ]
       resources :order_items, only: [ :update, :destroy]
       resources :categories

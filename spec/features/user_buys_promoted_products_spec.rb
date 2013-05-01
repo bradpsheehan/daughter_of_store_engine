@@ -29,7 +29,6 @@ describe 'As a user viewing the products of a store' do
       fill_in 'user_billing_address_attributes_city', with: 'Denver'
       fill_in 'user_billing_address_attributes_state', with: 'CO'
       fill_in 'user_billing_address_attributes_zipcode', with: '80210'
-      save_and_open_page
       click_button 'Checkout'
       page.should have_content "$11.42"
     end
