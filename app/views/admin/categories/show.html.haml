@@ -15,24 +15,3 @@
           %td= p.price
           %td= p.promotion
           
-
-/ %table
-/   %tr
-/     %th Customer
-/     %th Status
-/     %th Order Date & Time
-/     %th Customer Email
-/     %th Status
-/     %th Order Products
-/     %tr
-/       %td= @order.customer.username
-/       %td= "$#{@order.total}"
-/       %td= @order.created_at
-/       %td= @order.customer.email
-/       %td= @order.status
-/       - @order.order_products.each do |order_product|
-/         - product = Product.find(order_product.product_id)
-/         %td= product.name
-
-/ = link_to 'Back', orders_path
-
