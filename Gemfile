@@ -11,7 +11,6 @@ gem 'sorcery'
 gem 'pg'
 gem 'validation-scopes'
 gem "resque", "~>1.24.0"
-gem 'faker'
 gem 'kaminari'
 gem 'erb2haml'
 gem 'haml-rails'
@@ -35,16 +34,17 @@ group :development, :test do
   gem 'debugger'
   gem 'capybara'
   gem 'simplecov'
+  gem "better_errors"
   gem 'newrelic_rpm'
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'bullet', :group => 'development'
   gem 'xmpp4r'
+  gem 'database_cleaner', "~> 0.6.7"
+  gem 'faker'
 end
 
 group :test do
-  gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
 end

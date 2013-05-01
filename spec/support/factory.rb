@@ -4,6 +4,10 @@ FactoryGirl.define do
     title 'Dark Matter'
   end
 
+  factory :random_category, parent: :category do
+    title "Dark Matter #{Random.rand(100)}"
+  end
+
   factory :order_item do
     product { FactoryGirl.build(:product) }
     order { FactoryGirl.build(:order) }
@@ -17,7 +21,16 @@ FactoryGirl.define do
 
   factory :product do
     categories { [FactoryGirl.build(:category)] }
-    title 'Itchy Sweater'
+    title "Itchy Sweater"
+    description 'Hurts so good'
+    price 12.99
+    status 'active'
+    promotion 0
+  end
+
+  factory :random_product, parent: :product do
+    categories { [FactoryGirl.build(:category)] }
+    title "Itchy Sweater #{Random.rand(100)}"
     description 'Hurts so good'
     price 12.99
     status 'active'
@@ -33,6 +46,13 @@ FactoryGirl.define do
     factory :invalid_user do
       full_name nil
     end
+  end
+
+  factory :random_user, parent: :user do
+    full_name 'Brad Sheehan'
+    email "brad#{Random.rand(100)}@example.com"
+    display_name 'bradsheehan'
+    password 'password'
   end
 
   factory :uber, parent: :user do
@@ -57,10 +77,22 @@ FactoryGirl.define do
     status 'online'
   end
 
+  factory :random_store, parent: :store do
+    name  "Da best #{Random.rand(100)}"
+    description   'The bestest store'
+    path "a-store-#{Random.rand(100)}"
+    status 'online'
+  end
+
   factory :user_store_role do
     store_id 1
     user_id 1
     role 'admin'
+  end
+
+  factory :category_product do 
+    category_id 1
+    product_id  1
   end
 
   factory :discount do
