@@ -16,14 +16,6 @@ class Cart
     end
   end
 
-  def total(discount=nil)
-    total = items.map {|item|item.total}.inject(&:+) 
-    if discount.amount
-      total = total - discount.amount
-    end
-    total
-  end
-
   def pretotal
     total = items.map {|item|item.total}.inject(&:+) 
   end

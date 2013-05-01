@@ -1,12 +1,10 @@
 <!doctype html>
 %html
   %head
-  
-    / %link{:href => "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
-    / %script{:src => "http://code.jquery.com/jquery-1.9.1.js"}
-    / %script{:src => "http://code.jquery.com/ui/1.10.2/jquery-ui.js"}
-    / %link{:href => "/resources/demos/style.css", :rel => "stylesheet"}/
 
+    = javascript_include_tag "application"
+
+    %link{:href => "http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css", :rel => "stylesheet"}/
 
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
@@ -15,7 +13,6 @@
     %meta{:content => "", :name => "author"}/
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag "/favicon.ico?1"
-    = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
   %body{:style => "background: url('/assets/#{store_theme}.jpg');"}
