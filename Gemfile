@@ -33,7 +33,7 @@ group :development, :test do
   gem 'cane'
   gem 'reek'
   gem 'debugger'
-  # gem 'capybara'
+  gem 'capybara'
   gem 'simplecov'
   gem "better_errors"
   gem 'newrelic_rpm'

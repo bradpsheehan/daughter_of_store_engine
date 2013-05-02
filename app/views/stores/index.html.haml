@@ -1,7 +1,5 @@
-.span11
-  %h3 Our Stores
-  %hr/
-  - @stores.each do |store|
-    %h3= link_to store.name, store.path
-    %p= store.description
-    %br/
+.span11#stores-list
+  #stores-centered
+    - @stores.each do |store|
+      %h3#store-titles= link_to store.name, store.path
+      %br/

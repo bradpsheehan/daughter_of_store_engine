@@ -99,3 +99,16 @@
 .discount-amount {
   display: inline-block;
 }
+#stores-list {
+  padding-top: 60px;
+  text-align: center
+}
+#stores-centered {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+#store-titles {
+  font-size: 700%;
+  margin-bottom: 60px
+}
