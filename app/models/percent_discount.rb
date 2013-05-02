@@ -1,7 +1,7 @@
 class PercentDiscount
   def initialize(discount)
     @discount_id = discount.id
-    @discount_amount = discount.amount.to_f / 100
+    @discount_amount = 1.0 - (discount.amount.to_f / 100)
   end
 
   def message
