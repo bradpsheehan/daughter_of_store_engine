@@ -6,13 +6,15 @@
     %table.table
       %tr
         %th Product Name
-        %th Product Description  
+        %th Product Description
         %th Product Price
         %th Product Promotion
-        - @category.products.each do |p|
-          %tr
-          %td= p.title
-          %td= p.description
-          %td= p.price
-          %td= p.promotion
-          
+        .div
+          - @cat_products.each do |p|
+            %tr
+            %td= p.title
+            %td= p.description
+            %td= p.price
+            %td= p.promotion
+.pull-right
+  =paginate @cat_products

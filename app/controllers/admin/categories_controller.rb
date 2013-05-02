@@ -10,6 +10,8 @@ class Admin::CategoriesController < ApplicationController
     @categories = current_store.categories.order('created_at DESC')
                              .page(params[:page]).per(20)
     @category = current_store.categories.find(params[:id])
+    @cat_products = current_store.categories.find(params[:id]).products.order('created_at DESC')
+    .page(params[:page]).per(20)
   end
 
   def new
