@@ -10,12 +10,6 @@ describe 'SessionCart' do
     expect(@session_cart).to be_kind_of SessionCart
   end
 
-  it '#total' do
-    @cart = {store.id => {product.id => 1}}
-    @session_cart = SessionCart.new(@cart,store)
-    expect(@session_cart.total.truncate).to eq 12
-  end
-
   it '#count' do
     @cart = {store.id => {product.id => 1}}
     @session_cart = SessionCart.new(@cart,store)

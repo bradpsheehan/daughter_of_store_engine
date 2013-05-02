@@ -23,7 +23,7 @@ describe "As an logged in Administrator of a store" do
 
       page.should have_content("Promotion")
 
-      fill_in :category_promotion, with: 10.0
+      fill_in "category[promotion]", with: 10.0
 
       click_button "Submit"
 
