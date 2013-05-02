@@ -26,6 +26,9 @@ class Product < ActiveRecord::Base
     Rails.cache.fetch('Product.all',expires_in: 1.day) { all }
   end
 
+  def some_model
+  end
+
   def self.by_category(category_id)
     if category_id.present?
       Category.find(category_id).products
